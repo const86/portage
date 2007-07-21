@@ -1,0 +1,2 @@
+ESERVER_DIR="/var/lib/eserver"
+ESERVER_UID="eserver"
