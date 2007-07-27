@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+# Tool for executing _interactive_ eserver in 'detachable' mode.
+# Eserver does not run with /dev/null as standard input
+# (as it is when start-stop-daemon --start --background ...).
+# So we open a pipe and set its read end as stdin, then exec eserver.
+
+import os
+import sys
+
+r, w = os.pipe()
+os.dup2(r, 0)
+os.close(r)
+os.execv(sys.argv[1], sys.argv[1:])
