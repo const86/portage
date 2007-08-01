@@ -1,0 +1,11 @@
+--- src/deluge_core.cpp.orig	2007-07-31 23:02:49.544047702 +0500
++++ src/deluge_core.cpp	2007-07-31 23:02:28.659388871 +0500
+@@ -1310,6 +1310,8 @@
+     address_v4 inet_end = address_v4::from_string(end);
+     M_the_filter->add_rule(inet_start, inet_end, ip_filter::blocked);
+ 
++    M_ses->set_ip_filter(*M_the_filter);
++
+     Py_INCREF(Py_None); return Py_None;
+ }
+ 
