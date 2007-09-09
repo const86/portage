@@ -1,5 +1,3 @@
-# $Id$
-
 inherit autotools subversion
 
 DESCRIPTION="Userspace library providing a programming interface (API) to the in-kernel connection tracking state table"

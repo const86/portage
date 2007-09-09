@@ -1,5 +1,3 @@
-# $Id$
-
 inherit eutils
 
 DESCRIPTION="Unicode version of tex with other enhancements."

@@ -1,5 +1,3 @@
-# $Id$
-
 MY_PN="PSCyr"
 MY_P="${MY_PN}-${PV/_/-}"
 

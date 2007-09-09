@@ -1,5 +1,3 @@
-# $Id$
-
 inherit eutils
 
 DESCRIPTION="Productive development and delivery expert system tool."

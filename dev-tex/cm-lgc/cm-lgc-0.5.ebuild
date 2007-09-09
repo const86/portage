@@ -1,5 +1,3 @@
-# $Id$
-
 DESCRIPTION="Type 1 CM-based fonts for Latin, Greek and Cyrillic"
 HOMEPAGE="http://tug.ctan.org/tex-archive/fonts/ps-type1/cm-lgc/"
 SRC_URI="http://mirrors.ibiblio.org/pub/mirrors/CTAN/fonts/ps-type1/${PN}.zip"

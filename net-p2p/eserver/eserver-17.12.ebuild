@@ -1,5 +1,3 @@
-# $Id$
-
 inherit eutils
 
 DESCRIPTION="Lugdunum eDonkey2000/eMule server"

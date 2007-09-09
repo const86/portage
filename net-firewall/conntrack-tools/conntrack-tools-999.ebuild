@@ -1,5 +1,3 @@
-# $Id$
-
 inherit autotools subversion
 
 DESCRIPTION="Tools provides access to the in-kernel connection tracking state table"

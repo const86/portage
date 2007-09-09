@@ -1,5 +1,3 @@
-# $Id$
-
 inherit distutils
 
 MY_P=${P/q/Q}

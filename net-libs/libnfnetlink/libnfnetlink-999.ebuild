@@ -1,5 +1,3 @@
-# $Id$
-
 inherit autotools subversion
 
 DESCRIPTION="Low-level library for netfilter related kernel/userspace communication."
