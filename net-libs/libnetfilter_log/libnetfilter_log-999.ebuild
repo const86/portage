@@ -1,3 +1,5 @@
+# $Id$
+
 inherit autotools subversion
 
 DESCRIPTION="Userspace library providing a programming interface packets that have been logged by the kernel packet filter"

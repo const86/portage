@@ -1,3 +1,5 @@
+# $Id$
+
 inherit font
 
 DESCRIPTION="Computer Modern unicode OpenType fonts"
