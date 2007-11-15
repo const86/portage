@@ -11,7 +11,7 @@ IUSE=""
 
 DEPEND=">=app-text/tetex-3.0"
 RDEPEND="${DEPEND}
-app-text/xdvipdfmx"
+>app-text/xdvipdfmx-0.3"
 
 src_unpack() {
 	unpack ${A}
@@ -20,12 +20,13 @@ src_unpack() {
 }
 
 src_compile() {
-	sh build-xetex || die
+	sh build-xetex || die "build-xetex failed"
 }
 
 src_install() {
-	sh -x install-xetex || die
+	sh -x install-xetex || die "install-xetex failed"
 	dosym xetex /usr/bin/xelatex
+	dosym unicode-letters.tex /usr/share/texmf/tex/generic/xetex/xplain.tex
 	insinto /etc/texmf/fmtutil.d
 	newins ${FILESDIR}/fmtutil.cnf 10xetex.cnf
 	insinto /etc/texmf/texmf.d

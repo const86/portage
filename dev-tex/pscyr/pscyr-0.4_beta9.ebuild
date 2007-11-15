@@ -12,6 +12,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 S="${WORKDIR}/${MY_PN}"
 
+DEPEND="virtual/tetex"
+
 src_install() {
 	dodir /usr/share/texmf-site
 	mv fonts tex ${D}/usr/share/texmf-site
