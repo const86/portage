@@ -8,7 +8,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 S="${WORKDIR}/${PN}"
 
-DEPEND="virtual/tetex"
+DEPEND="=app-text/tetex-3*"
 
 src_install() {
 	dodir /usr/share/texmf-site
