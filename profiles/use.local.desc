@@ -1,10 +1,8 @@
 media-sound/xmms2:cdda - Build CDDA plugin
 media-sound/xmms2:cli - Build console XMMS2 client
-media-sound/xmms2:cxx - Build C++ bindings
-media-sound/xmms2:icecast - Build Icecast output plugin
 media-sound/xmms2:mms - Build MMS (Microsoft Media Server) output plugin
 media-sound/xmms2:ofa - Build OFA (Open Fingerprint Architecture) plugin
+media-sound/xmms2:shout - Build Icecast output plugin
 media-sound/xmms2:sid - Build SID (Commodore 64 Audio) plugin
 media-sound/xmms2:vocoder - Build vocoder plugin
-media-sound/xmms2:xmms2d - Build XMMS2 daemon
 net-p2p/eserver:smp - Use SMP optimized executable

@@ -7,34 +7,41 @@ RESTRICT="nomirror"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac alsa ao avahi cdda cli curl cxx fam flac ffmpeg gnome icecast jack mad mms modplug musepack ofa perl pulseaudio python samba sid vocoder vorbis xml xmms2d"
+IUSE="aac alsa ao avahi cdda cli curl fam flac ffmpeg gnome jack mad
+minimal mms modplug musepack nocxx ofa perl pulseaudio python samba
+shout sid vocoder vorbis xml"
 
 RDEPEND="dev-libs/glib:2
-dev-db/sqlite:3
-aac? ( media-libs/faad2 )
-alsa? ( media-libs/alsa-lib )
-ao? ( media-libs/libao )
-avahi? ( net-dns/avahi )
-cdda? ( dev-libs/libcdio media-libs/libdicsid )
-curl? ( net-misc/curl )
-cxx? ( dev-libs/boost )
-flac? ( media-libs/flac media-libs/libogg )
-ffmpeg? ( media-video/ffmpeg )
-gnome? ( gnome-base/gnome-vfs )
-icecast? ( media-libs/libvorbis media-libs/libogg media-libs/libshout )
-jack? ( media-sound/jack )
-mad? ( media-libs/libmad )
-mms? ( media-libs/libmms )
-modplug? ( media-libs/libmodplug )
-musepack? ( media-libs/libmpcdec )
-ofa? ( media-libs/libofa )
-perl? ( dev-lang/perl )
-pulseaudio? ( media-sound/pulseaudio )
-samba? ( net-fs/samba )
-sid? ( media-sound/sidplay )
-vocoder? ( sci-libs/fftw:3.0 media-libs/libsamplerate )
-vorbis? ( media-libs/libvorbis )
-xml? ( dev-libs/libxml2 )"
+	!nocxx? ( dev-libs/boost )
+	perl? ( dev-lang/perl )
+	!minimal? ( dev-db/sqlite:3
+		aac? ( media-libs/faad2 )
+		alsa? ( media-libs/alsa-lib )
+		ao? ( media-libs/libao )
+		avahi? ( net-dns/avahi )
+		cdda? ( dev-libs/libcdio
+			media-libs/libdicsid )
+		curl? ( net-misc/curl )
+		flac? ( media-libs/flac
+			media-libs/libogg )
+		ffmpeg? ( media-video/ffmpeg )
+		gnome? ( gnome-base/gnome-vfs )
+		jack? ( media-sound/jack )
+		mad? ( media-libs/libmad )
+		mms? ( media-libs/libmms )
+		modplug? ( media-libs/libmodplug )
+		musepack? ( media-libs/libmpcdec )
+		ofa? ( media-libs/libofa )
+		pulseaudio? ( media-sound/pulseaudio )
+		samba? ( net-fs/samba )
+		shout? ( media-libs/libvorbis
+			media-libs/libogg
+			media-libs/libshout )
+		sid? ( media-sound/sidplay )
+		vocoder? ( sci-libs/fftw:3.0
+			media-libs/libsamplerate )
+		vorbis? ( media-libs/libvorbis )
+		xml? ( dev-libs/libxml2 ) )"
 
 DEPEND="${RDEPEND}
 dev-lang/python
@@ -44,18 +51,23 @@ S="${WORKDIR}/${MY_P}"
 
 src_compile() {
 	local conf oe od pe pd
-	if use xmms2d; then
-		pe="asf,asx,cue,diskwrite,equalizer,file,id3v2,icymetaint,m3u,mp4,normalize,null,nulstripper,pls,replaygain,wave,xml"
+	if use minimal; then
+		conf="--without-xmms2d=1"
+	else
+		pe="asf,asx,cue,diskwrite,equalizer,file,id3v2,icymetaint,m3u,mp4"
+		pe="${pe},normalize,null,nulstripper,pls,replaygain,wave,xml"
 		pd="coreaudio,mac,nms,oss,waveout"
-		for p in alsa ao ffmpeg:avcodec ffmpeg:avformat cdda curl avahi:daap aac:faad flac gnome:gnomevfs icecast:ices jack curl:lastfm curl:lastfmeta mad mms modplug musepack ofa pulseaudio:pulse xml:rss samba vocoder vorbis xml:xspf; do
+		for p in alsa ao ffmpeg:avcodec ffmpeg:avformat cdda curl avahi:daap \
+			aac:faad flac gnome:gnomevfs shout:ices jack curl:lastfm \
+			curl:lastfmeta mad mms modplug musepack ofa pulseaudio:pulse \
+			xml:rss samba vocoder vorbis xml:xspf; do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
-	else
-		conf="--without-xmms2d=1"
 	fi
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi cli xmms2d:et xmms2d:launcher fam:medialib-updater perl python cxx:xmmsclient++ cxx:xmmsclient++-glib; do
+	for o in avahi cli !minimal:et !minimal:launcher fam:medialib-updater \
+		perl python !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od}"
