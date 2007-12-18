@@ -17,7 +17,11 @@ DEPEND="dev-util/cmake
 ${RDEPEND}"
 
 src_compile() {
-	sed -i "s:\"games/\":\"games/bin/\":" CMakeLists.txt
+	sed -e "s:\"games/\":\"games/bin/\":" \
+		-i CMakeLists.txt
+	sed -e "/^Categories=/s/=/=Application;/" \
+		-e "/^Icon=/s/supertux/supertux2/" \
+		-i supertux2.desktop
 	cmake \
 		-DCMAKE_CXX_COMPILER=$(type -P $(tc-getCXX)) \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
@@ -28,5 +32,8 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR=${D} install || die
+	cd ${D}/usr/share/pixmaps
+	mv supertux.png supertux2.png
+	mv supertux.xpm supertux2.xpm
 	prepgamesdirs
 }
