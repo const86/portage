@@ -7,13 +7,14 @@ RESTRICT="nomirror"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac alsa ao avahi cdda cli curl fam flac ffmpeg gnome jack mad
-minimal mms modplug musepack nocxx ofa perl pulseaudio python samba
-shout sid vocoder vorbis xml"
+IUSE="aac alsa ao avahi cdda +cli curl fam flac ffmpeg gnome jack mad
+minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
+samba shout sid vocoder vorbis xml"
 
 RDEPEND="dev-libs/glib:2
 	!nocxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
+	ruby? ( dev-lang/ruby )
 	!minimal? ( dev-db/sqlite:3
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
@@ -65,13 +66,14 @@ src_compile() {
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
 	fi
+	oe="pixmaps"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi cli !minimal:et !minimal:launcher fam:medialib-updater \
-		perl python !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
+	for o in avahi cli !minimal:et !minimal:launcher \
+		fam:medialib-updater perl python ruby \
+		!nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
-	conf="${conf} --without-optionals=${od}"
-	[ -n "${oe}" ] && conf="${conf} --with-optionals=${oe/,}"
+	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
 	echo ./waf --prefix=/usr --conf-prefix=/etc ${conf} configure
 	./waf --prefix=/usr --conf-prefix=/etc ${conf} configure \
 		|| die "configure failed"
