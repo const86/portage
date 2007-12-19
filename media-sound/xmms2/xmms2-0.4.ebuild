@@ -7,7 +7,7 @@ RESTRICT="nomirror"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac alsa ao avahi cdda +cli curl fam flac ffmpeg gnome jack mad
+IUSE="aac alsa ao avahi cdda cli curl fam flac ffmpeg gnome jack mad
 minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
 samba shout sid vocoder vorbis xml"
 
