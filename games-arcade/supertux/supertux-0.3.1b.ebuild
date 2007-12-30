@@ -1,12 +1,12 @@
-inherit subversion games
+inherit games
 
 DESCRIPTION="A game similar to Super Mario Bros."
 HOMEPAGE="http://supertux.lethargik.org/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
 SLOT="2"
 
-ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
+SRC_URI="http://download.berlios.de/${PN}/${P}.tar.bz2"
 
 RDEPEND="virtual/opengl
 media-libs/libsdl
@@ -16,8 +16,10 @@ media-libs/openal"
 DEPEND="dev-util/cmake
 ${RDEPEND}"
 
+S="${WORKDIR}/${PN}-${PV%[a-z]}"
+
 src_unpack() {
-	subversion_src_unpack
+	unpack ${A}
 	cd ${S}
 	epatch "${FILESDIR}/0.3.1.patch"
 }
