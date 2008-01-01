@@ -1,10 +1,14 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 inherit apache-module subversion
 
 DESCRIPTION="Apache2 mod_autoindex replacement"
 HOMEPAGE="http://const.tltsu.ru/svn/const/pub/mod_listdir/"
-KEYWORDS="~amd64 ~x86"
+
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 ESVN_REPO_URI="http://const.tltsu.ru/svn/const/pub/mod_listdir/"
 
@@ -22,7 +26,7 @@ src_install() {
 
 pkg_postinst() {
 	apache-module_pkg_postinst
-	einfo "To enable ${PN} you need to disable loading mod_autoindex."
+	einfo "To enable ${PN} you need to disable mod_autoindex."
 	einfo "You may want to copy XSL stylesheet into site directory."
 	einfo "If present mod_transform is used to perform"
 	einfo "XSL tranformation on server side."

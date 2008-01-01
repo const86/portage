@@ -1,10 +1,12 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 MY_P="${P}DrKosmos"
 DESCRIPTION="X(cross)platform Music Multiplexing System."
 HOMEPAGE="http://xmms2.xmms.se/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
-LICENSE="GPL-2 LGPL-2.1"
-RESTRICT="mirror"
 
+LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="aac alsa ao avahi cli curl fam flac ffmpeg gnome jack mad
@@ -41,12 +43,12 @@ RDEPEND="=dev-libs/glib-2*
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
 		xml? ( dev-libs/libxml2 ) )"
-
 DEPEND="${RDEPEND}
 dev-lang/python
 python? ( dev-python/pyrex )"
 
 S="${WORKDIR}/${MY_P}"
+RESTRICT="mirror"
 
 src_compile() {
 	local conf oe od pe pd

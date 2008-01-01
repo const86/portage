@@ -1,12 +1,15 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 inherit games
 
 DESCRIPTION="A game similar to Super Mario Bros."
 HOMEPAGE="http://supertux.lethargik.org/"
-KEYWORDS="amd64 x86"
+SRC_URI="http://download.berlios.de/${PN}/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="2"
-
-SRC_URI="http://download.berlios.de/${PN}/${P}.tar.bz2"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/opengl
 media-libs/libsdl

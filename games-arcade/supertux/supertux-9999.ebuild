@@ -1,12 +1,14 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
 inherit subversion games
 
 DESCRIPTION="A game similar to Super Mario Bros."
 HOMEPAGE="http://supertux.lethargik.org/"
-KEYWORDS="~amd64 ~x86"
+
 LICENSE="GPL-2"
 SLOT="2"
-
-ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="virtual/opengl
 media-libs/libsdl
@@ -15,6 +17,8 @@ dev-games/physfs
 media-libs/openal"
 DEPEND="dev-util/cmake
 ${RDEPEND}"
+
+ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 
 src_compile() {
 	sed -e "/Icon=/s/supertux/supertux2/" \

@@ -1,8 +1,8 @@
 DIST cm-unicode-0.6.3-otf.tar.gz 4461657 RMD160 d617a613fc95b7ca29dce382b0f068bcbddead8a SHA1 0aa82f248a16b19ee316f44f7de9efa506a3e12c SHA256 dab181cd133b2c2052ddb4bfcbb9389f5fad02de04dfece97505df13450aee4a
-EBUILD cm-unicode-0.6.3.ebuild 371 RMD160 5132e9519ac71fb17c5c6e1a937719bbfc6ad3d1 SHA1 e617c7a30219c957f47bd8fea27f55df86193a44 SHA256 d42ddd768fd9bc172495d528e739d42eee2a5c545d56c1ba0135218a5382b03d
-MD5 9cea5be3efd7dcbbc362b7f56cd5c54c cm-unicode-0.6.3.ebuild 371
-RMD160 5132e9519ac71fb17c5c6e1a937719bbfc6ad3d1 cm-unicode-0.6.3.ebuild 371
-SHA256 d42ddd768fd9bc172495d528e739d42eee2a5c545d56c1ba0135218a5382b03d cm-unicode-0.6.3.ebuild 371
+EBUILD cm-unicode-0.6.3.ebuild 473 RMD160 2d3f5e6a46effa483b6b414ce84f322659066a3a SHA1 d9b8492e1d4ba2171ee1e6f1fd912c7810474b46 SHA256 fff3cda79745f3b7ef15114c30d5e0b5212910734f290102c13a3b5ef2e46f1a
+MD5 675520e39dcc8533c1311d759bf212ea cm-unicode-0.6.3.ebuild 473
+RMD160 2d3f5e6a46effa483b6b414ce84f322659066a3a cm-unicode-0.6.3.ebuild 473
+SHA256 fff3cda79745f3b7ef15114c30d5e0b5212910734f290102c13a3b5ef2e46f1a cm-unicode-0.6.3.ebuild 473
 MD5 b980d4ab41005ffd906bd234a3e1e043 files/digest-cm-unicode-0.6.3 265
 RMD160 f3016c90e30136ca0dbcdbce3daeda5caf56b8f0 files/digest-cm-unicode-0.6.3 265
 SHA256 75b558a06d3bde0dc8dba736aeea8f5b1a894f0ee00f990efa2f7cf733e08a2d files/digest-cm-unicode-0.6.3 265
