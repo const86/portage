@@ -5,7 +5,7 @@ HOMEPAGE="http://www.ghg.net/clips/CLIPS.html"
 SRC_URI="http://www.ghg.net/clips/download/source/clipssrc.tar.Z"
 
 SLOT="0"
-LICENSE="BSD style"
+LICENSE="BSD"
 KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/clipssrc"

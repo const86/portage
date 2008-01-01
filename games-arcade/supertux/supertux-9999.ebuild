@@ -29,12 +29,12 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die
+	emake DESTDIR="${D}" install || die
 	dodir /usr/games/bin
-	mv ${D}/usr/games/supertux2 ${D}/usr/games/bin/
-	cd ${D}/usr/share/doc
+	mv "${D}/usr/games/supertux2" "${D}/usr/games/bin/"
+	cd "${D}/usr/share/doc"
 	mv supertux2 ${P}
-	cd ${D}/usr/share/pixmaps
+	cd "${D}/usr/share/pixmaps"
 	mv supertux.png supertux2.png
 	mv supertux.xpm supertux2.xpm
 	prepgamesdirs

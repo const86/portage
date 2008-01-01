@@ -3,25 +3,23 @@ DESCRIPTION="X(cross)platform Music Multiplexing System."
 HOMEPAGE="http://xmms2.xmms.se/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
-RESTRICT="nomirror"
+RESTRICT="mirror"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac alsa ao avahi cdda cli curl fam flac ffmpeg gnome jack mad
+IUSE="aac alsa ao avahi cli curl fam flac ffmpeg gnome jack mad
 minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
 samba shout sid vocoder vorbis xml"
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="=dev-libs/glib-2*
 	!nocxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
 	ruby? ( dev-lang/ruby )
-	!minimal? ( dev-db/sqlite:3
+	!minimal? ( =dev-db/sqlite-3*
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
 		avahi? ( net-dns/avahi )
-		cdda? ( dev-libs/libcdio
-			media-libs/libdicsid )
 		curl? ( net-misc/curl )
 		flac? ( media-libs/flac
 			media-libs/libogg )
@@ -39,7 +37,7 @@ RDEPEND="dev-libs/glib:2
 			media-libs/libogg
 			media-libs/libshout )
 		sid? ( media-sound/sidplay )
-		vocoder? ( sci-libs/fftw:3.0
+		vocoder? ( =sci-libs/fftw-3*
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
 		xml? ( dev-libs/libxml2 ) )"
@@ -57,8 +55,8 @@ src_compile() {
 	else
 		pe="asf,asx,cue,diskwrite,equalizer,file,id3v2,icymetaint,m3u,mp4"
 		pe="${pe},normalize,null,nulstripper,pls,replaygain,wave,xml"
-		pd="coreaudio,mac,nms,oss,waveout"
-		for p in alsa ao ffmpeg:avcodec ffmpeg:avformat cdda curl avahi:daap \
+		pd="cdda,coreaudio,mac,nms,oss,waveout"
+		for p in alsa ao ffmpeg:avcodec ffmpeg:avformat curl avahi:daap \
 			aac:faad flac gnome:gnomevfs shout:ices jack curl:lastfm \
 			curl:lastfmeta mad mms modplug musepack ofa pulseaudio:pulse \
 			xml:rss samba vocoder vorbis xml:xspf; do
@@ -81,5 +79,5 @@ src_compile() {
 }
 
 src_install() {
-	./waf --destdir=${D} install || die "install failed"
+	./waf --destdir="${D}" install || die "install failed"
 }

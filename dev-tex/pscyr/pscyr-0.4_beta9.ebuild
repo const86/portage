@@ -16,13 +16,13 @@ DEPEND="virtual/tetex"
 
 src_install() {
 	dodir /usr/share/texmf-site
-	mv fonts tex ${D}/usr/share/texmf-site
+	mv fonts tex "${D}/usr/share/texmf-site"
 	insinto /usr/share/texmf-site/fonts/enc/dvips/pscyr
 	doins dvips/pscyr/{t2a,t2d}.enc
 	insinto /usr/share/texmf-site/fonts/map/dvips/pscyr
 	doins dvips/pscyr/pscyr.map
 	insinto /etc/texmf/updmap.d
-	newins ${FILESDIR}/updmap.cfg 10pscyr.cfg
+	newins "${FILESDIR}/updmap.cfg" 10pscyr.cfg
 }
 
 pkg_postinst() {

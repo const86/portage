@@ -3,10 +3,6 @@ EBUILD cm-unicode-0.6.3.ebuild 371 RMD160 5132e9519ac71fb17c5c6e1a937719bbfc6ad3
 MD5 9cea5be3efd7dcbbc362b7f56cd5c54c cm-unicode-0.6.3.ebuild 371
 RMD160 5132e9519ac71fb17c5c6e1a937719bbfc6ad3d1 cm-unicode-0.6.3.ebuild 371
 SHA256 d42ddd768fd9bc172495d528e739d42eee2a5c545d56c1ba0135218a5382b03d cm-unicode-0.6.3.ebuild 371
-MISC cm-unicode-0.6.3.ebuild~ 67 RMD160 7f766deeaf6b647c432077437eb6b27ff1f86db2 SHA1 d310a50eae204ab94f04bf5171f20e17e55ba932 SHA256 99efe01822d3006110b593d79a9671bb1ef3db0a690d461c6e7458ba67974d24
-MD5 5c323ffd5af2b51b75a9287de2868755 cm-unicode-0.6.3.ebuild~ 67
-RMD160 7f766deeaf6b647c432077437eb6b27ff1f86db2 cm-unicode-0.6.3.ebuild~ 67
-SHA256 99efe01822d3006110b593d79a9671bb1ef3db0a690d461c6e7458ba67974d24 cm-unicode-0.6.3.ebuild~ 67
 MD5 b980d4ab41005ffd906bd234a3e1e043 files/digest-cm-unicode-0.6.3 265
 RMD160 f3016c90e30136ca0dbcdbce3daeda5caf56b8f0 files/digest-cm-unicode-0.6.3 265
 SHA256 75b558a06d3bde0dc8dba736aeea8f5b1a894f0ee00f990efa2f7cf733e08a2d files/digest-cm-unicode-0.6.3 265

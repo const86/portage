@@ -2,7 +2,7 @@ inherit apache-module subversion
 
 DESCRIPTION="Apache2 mod_autoindex replacement"
 HOMEPAGE="http://const.tltsu.ru/svn/const/pub/mod_listdir/"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 

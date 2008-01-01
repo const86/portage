@@ -3,6 +3,7 @@ inherit eutils
 DESCRIPTION="Lugdunum eDonkey2000/eMule server"
 HOMEPAGE="http://lugdunum2k.free.fr/kiten.html"
 KEYWORDS="amd64 x86"
+LICENSE="free-noncomm"
 SLOT="0"
 IUSE="nptl smp"
 RESTRICT="binchecks mirror strip"
