@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="cli">Build console XMMS2 client</flag>
+    <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
+    <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
+    <flag name="shout">Build Icecast output plugin</flag>
+    <flag name="sid">Build SID (Commodore 64 Audio) plugin</flag>
+    <flag name="vocoder">Build vocoder plugin</flag>
+  </use>
+</pkgmetadata>

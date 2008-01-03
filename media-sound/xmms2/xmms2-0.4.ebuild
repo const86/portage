@@ -1,6 +1,8 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI="1"
+
 MY_P="${P}DrKosmos"
 DESCRIPTION="X(cross)platform Music Multiplexing System."
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -13,11 +15,11 @@ IUSE="aac alsa ao avahi cli curl fam flac ffmpeg gnome jack mad
 minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
 samba shout sid vocoder vorbis xml"
 
-RDEPEND="=dev-libs/glib-2*
+RDEPEND="dev-libs/glib:2
 	!nocxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
 	ruby? ( dev-lang/ruby )
-	!minimal? ( =dev-db/sqlite-3*
+	!minimal? ( dev-db/sqlite:3
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
@@ -39,7 +41,7 @@ RDEPEND="=dev-libs/glib-2*
 			media-libs/libogg
 			media-libs/libshout )
 		sid? ( media-sound/sidplay )
-		vocoder? ( =sci-libs/fftw-3*
+		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
 		xml? ( dev-libs/libxml2 ) )"

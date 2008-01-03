@@ -1,4 +1,3 @@
-media-sound/xmms2:cdda - Build CDDA plugin
 media-sound/xmms2:cli - Build console XMMS2 client
 media-sound/xmms2:mms - Build MMS (Microsoft Media Server) output plugin
 media-sound/xmms2:ofa - Build OFA (Open Fingerprint Architecture) plugin
