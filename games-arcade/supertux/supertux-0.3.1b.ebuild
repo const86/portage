@@ -12,14 +12,15 @@ SLOT="2"
 KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/opengl
-media-libs/libsdl
-media-libs/sdl-image
-dev-games/physfs
-media-libs/openal"
-DEPEND="dev-util/cmake
-${RDEPEND}"
+	media-libs/libsdl
+	media-libs/sdl-image
+	dev-games/physfs
+	media-libs/openal"
+DEPEND="${RDEPEND}
+	dev-util/cmake"
 
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
+RESTRICT="mirror"
 
 src_compile() {
 	sed -e "/Icon=/s/supertux/supertux2/" \

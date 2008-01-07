@@ -46,8 +46,8 @@ RDEPEND="dev-libs/glib:2
 		vorbis? ( media-libs/libvorbis )
 		xml? ( dev-libs/libxml2 ) )"
 DEPEND="${RDEPEND}
-dev-lang/python
-python? ( dev-python/pyrex )"
+	dev-lang/python
+	python? ( dev-python/pyrex )"
 
 S="${WORKDIR}/${MY_P}"
 RESTRICT="mirror"

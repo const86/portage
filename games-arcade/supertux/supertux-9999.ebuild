@@ -11,12 +11,12 @@ SLOT="2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="virtual/opengl
-media-libs/libsdl
-media-libs/sdl-image
-dev-games/physfs
-media-libs/openal"
-DEPEND="dev-util/cmake
-${RDEPEND}"
+	media-libs/libsdl
+	media-libs/sdl-image
+	dev-games/physfs
+	media-libs/openal"
+DEPEND="${RDEPEND}
+	dev-util/cmake"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 
