@@ -23,6 +23,9 @@ DEPEND="${RDEPEND}
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux-sharp/"
 
 src_compile() {
+	sed -e "s:\"/usr/games/supertux\":\"/usr/games/bin/supertux2\":" \
+		-e "s:\"/usr/share/games/supertux\":\"/usr/share/games/supertux2\":" \
+		-i supertux-editor/Settings.cs || die
 	jam || die
 }
 
