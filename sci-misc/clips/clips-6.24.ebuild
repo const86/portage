@@ -3,7 +3,7 @@
 
 inherit eutils
 
-DESCRIPTION="Productive development and delivery expert system tool."
+DESCRIPTION="Productive development and delivery expert system tool"
 HOMEPAGE="http://www.ghg.net/clips/CLIPS.html"
 SRC_URI="http://www.ghg.net/clips/download/source/clipssrc.tar.Z"
 

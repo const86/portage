@@ -3,7 +3,7 @@
 
 inherit subversion games
 
-DESCRIPTION="A game similar to Super Mario Bros."
+DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertux.lethargik.org/"
 
 LICENSE="GPL-2"

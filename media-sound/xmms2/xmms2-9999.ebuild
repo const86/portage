@@ -3,14 +3,14 @@
 
 EAPI="1"
 
-MY_P="${P}DrKosmos"
+inherit git
+
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="aac alsa ao avahi cli curl fam flac ffmpeg gnome jack mad
 minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
 samba shout sid vocoder vorbis xml"
@@ -49,8 +49,7 @@ DEPEND="${RDEPEND}
 	dev-lang/python
 	python? ( dev-python/pyrex )"
 
-S="${WORKDIR}/${MY_P}"
-RESTRICT="mirror"
+EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 
 src_compile() {
 	local conf oe od pe pd
