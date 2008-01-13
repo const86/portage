@@ -3,7 +3,7 @@
 
 EAPI="1"
 
-inherit git
+inherit eutils git
 
 DESCRIPTION="XMMS2 client written with C++/Qt4"
 HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Esperanza"
@@ -32,4 +32,8 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die
+	insinto /usr/share/applications
+	doins "${FILESDIR}/esperanza.desktop"
+	insinto /usr/share/pixmaps
+	doins data/images/esperanza.png
 }

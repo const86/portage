@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GXMMS2
+Comment=GTK2 XMMS2 Client
+Exec=gxmms2
+Icon=gxmms2_mini
+Terminal=false
+Categories=AudioVideo;
+Type=Application

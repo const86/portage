@@ -33,4 +33,8 @@ src_install() {
 		doins gkrellxmms2.so
 	fi
 	dodoc README
+	insinto /usr/share/applications
+	doins "${FILESDIR}/gxmms2.desktop"
+	insinto /usr/share/pixmaps
+	doins gxmms2src/gxmms2_mini.xpm
 }
