@@ -12,13 +12,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="games-arcade/supertux:2
+DEPEND="games-arcade/supertux:2
 	virtual/opengl
 	dev-lang/mono
 	dev-dotnet/gtk-sharp:2
 	dev-dotnet/glade-sharp:2"
-DEPEND="${RDEPEND}
-	dev-util/jam"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux-sharp/"
 
@@ -26,7 +24,7 @@ src_compile() {
 	sed -e "s:\"/usr/games/supertux\":\"/usr/games/bin/supertux2\":" \
 		-e "s:\"/usr/share/games/supertux\":\"/usr/share/games/supertux2\":" \
 		-i supertux-editor/Settings.cs || die
-	jam || die
+	make || die
 }
 
 src_install() {
