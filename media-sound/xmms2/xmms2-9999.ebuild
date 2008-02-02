@@ -11,7 +11,7 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi cli curl fam flac ffmpeg gnome jack mad
+IUSE="aac alsa ao avahi cli curl fam flac ffmpeg jack mad
 minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
 samba shout sid vocoder vorbis xml"
 
@@ -28,7 +28,6 @@ RDEPEND="dev-libs/glib:2
 		flac? ( media-libs/flac
 			media-libs/libogg )
 		ffmpeg? ( media-video/ffmpeg )
-		gnome? ( gnome-base/gnome-vfs )
 		jack? ( media-sound/jack )
 		mad? ( media-libs/libmad )
 		mms? ( media-libs/libmms )
@@ -60,7 +59,7 @@ src_compile() {
 		pe="${pe},normalize,null,nulstripper,pls,replaygain,wave,xml"
 		pd="cdda,coreaudio,mac,nms,oss,waveout"
 		for p in alsa ao ffmpeg:avcodec ffmpeg:avformat curl avahi:daap \
-			aac:faad flac gnome:gnomevfs shout:ices jack curl:lastfm \
+			aac:faad flac shout:ices jack curl:lastfm \
 			curl:lastfmeta mad mms modplug musepack ofa pulseaudio:pulse \
 			xml:rss samba vocoder vorbis xml:xspf; do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
