@@ -16,6 +16,8 @@ KEYWORDS="amd64 x86"
 DEPEND="media-sound/xmms2
 	x11-libs/qt:4"
 
+RESTRICT="mirror"
+
 pkg_setup() {
 	if built_with_use media-sound/xmms2 nocxx; then
 		eerror "You have disabled C++ support in media-sound/xmms2!"

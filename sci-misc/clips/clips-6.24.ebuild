@@ -9,6 +9,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+RESTRICT="mirror"
+
 src_install() {
 	emake DESTDIR="${D}" install || die
 }

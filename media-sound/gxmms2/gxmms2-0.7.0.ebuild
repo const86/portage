@@ -18,6 +18,8 @@ DEPEND="media-sound/xmms2
 	x11-libs/qt:4
 	gkrellm? ( app-admin/gkrellm:2 )"
 
+RESTRICT="mirror"
+
 src_compile() {
 	emake gxmms2 || die
 	if use gkrellm; then
