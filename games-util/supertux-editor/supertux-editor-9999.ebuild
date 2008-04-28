@@ -12,11 +12,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="games-arcade/supertux:2
+RDEPEND="games-arcade/supertux:2
 	virtual/opengl
 	dev-lang/mono
 	dev-dotnet/gtk-sharp:2
 	dev-dotnet/glade-sharp:2"
+DEPEND="${RDEPEND}
+	|| ( dev-util/jam dev-util/ftjam )"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux-sharp/"
 

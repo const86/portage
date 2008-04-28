@@ -19,7 +19,7 @@ RDEPEND="games-arcade/supertux:2
 	dev-dotnet/gtk-sharp:2
 	dev-dotnet/glade-sharp:2"
 DEPEND="${RDEPEND}
-	dev-util/jam"
+	|| ( dev-util/jam dev-util/ftjam )"
 
 RESTRICT="mirror"
 
