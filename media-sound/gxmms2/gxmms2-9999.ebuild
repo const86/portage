@@ -3,7 +3,7 @@
 
 EAPI="1"
 
-inherit git multilib
+inherit eutils git multilib
 
 DESCRIPTION="GTK2 based XMMS2 client written in C"
 HOMEPAGE="http://wejp.k.vu/projects/xmms2/"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gkrellm"
 
 DEPEND="media-sound/xmms2
-	x11-libs/qt:4
+	x11-libs/gtk+:2
 	gkrellm? ( app-admin/gkrellm:2 )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
@@ -33,8 +33,6 @@ src_install() {
 		doins gkrellxmms2.so
 	fi
 	dodoc README
-	insinto /usr/share/applications
-	doins "${FILESDIR}/gxmms2.desktop"
-	insinto /usr/share/pixmaps
-	doins gxmms2src/gxmms2_mini.xpm
+	newicon gxmms2src/gxmms2_mini.xpm gxmms2.xpm
+	make_desktop_entry gxmms2 GXMMS2
 }

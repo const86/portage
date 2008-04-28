@@ -32,8 +32,6 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die
-	insinto /usr/share/applications
-	doins "${FILESDIR}/esperanza.desktop"
-	insinto /usr/share/pixmaps
-	doins data/images/esperanza.png
+	doicon data/images/esperanza.png
+	make_desktop_entry esperanza Esperanza
 }
