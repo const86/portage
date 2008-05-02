@@ -76,7 +76,6 @@ src_compile() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	echo ./waf --prefix=/usr --conf-prefix=/etc ${conf} configure
 	./waf --prefix=/usr --conf-prefix=/etc ${conf} configure \
 		|| die "configure failed"
 	./waf ${MAKEOPTS} build || die "build failed"
