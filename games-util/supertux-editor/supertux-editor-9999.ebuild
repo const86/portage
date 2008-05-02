@@ -3,7 +3,7 @@
 
 EAPI="1"
 
-inherit subversion games
+inherit eutils games subversion
 
 DESCRIPTION="SuperTux level editor"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -33,11 +33,11 @@ src_install() {
 	local dir="$(games_get_libdir)/${PN}"
 	insinto "${dir}"
 	doins *.dll *.dll.config supertux-editor.exe
-	m4 -D DIR="${dir}" "${FILESDIR}"/supertux-editor.m4 > "${WORKDIR}"/supertux-editor
+	m4 -D DIR="${dir}" \
+		"${FILESDIR}"/supertux-editor.m4 > "${WORKDIR}"/supertux-editor
 	dogamesbin "${WORKDIR}"/supertux-editor
 	insinto /usr/share/applications
 	doins supertux-editor.desktop
-	insinto /usr/share/pixmaps
-	doins supertux-editor.{png,xpm}
+	doicon supertux-editor.{png,xpm}
 	prepgamesdirs
 }
