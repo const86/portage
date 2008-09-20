@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="A Tool for Building Expert Systems"
-HOMEPAGE="http://www.ghg.net/clips/CLIPS.html"
-SRC_URI="http://www.ghg.net/clips/download/archive/${P}.tar.gz"
+HOMEPAGE="http://clipsrules.sourceforge.net/"
+SRC_URI="mirror://sourceforge/clipsrules/clips_core_source_624.zip"
 
 LICENSE="BSD"
 SLOT="0"
@@ -11,6 +11,12 @@ KEYWORDS="amd64 x86"
 
 RESTRICT="mirror"
 
+S="${WORKDIR}/CLIPSSrc"
+
+src_compile() {
+	emake -f "${FILESDIR}/Makefile" || die
+}
+
 src_install() {
-	emake DESTDIR="${D}" install || die
+	dobin clips
 }
