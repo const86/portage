@@ -1,6 +1,8 @@
 media-sound/gxmms2:gkrellm - Build GKrellM plugin
 media-sound/xmms2:cli - Build console XMMS2 client
+media-sound/xmms2:libvisual - Build visualization client
 media-sound/xmms2:mms - Build MMS (Microsoft Media Server) output plugin
+media-sound/xmms2:mpg123 - Build mpg123 plugin
 media-sound/xmms2:ofa - Build OFA (Open Fingerprint Architecture) plugin
 media-sound/xmms2:shout - Build Icecast output plugin
 media-sound/xmms2:sid - Build SID (Commodore 64 Audio) plugin

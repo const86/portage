@@ -3,7 +3,9 @@
 <pkgmetadata>
   <use>
     <flag name="cli">Build console XMMS2 client</flag>
+    <flag name="libvisual">Build visualization client</flag>
     <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
+    <flag name="mpg123">Build mpg123 plugin</flag>
     <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
     <flag name="shout">Build Icecast output plugin</flag>
     <flag name="sid">Build SID (Commodore 64 Audio) plugin</flag>

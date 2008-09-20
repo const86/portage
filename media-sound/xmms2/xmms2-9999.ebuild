@@ -11,9 +11,9 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi +cli curl fam flac ffmpeg jack mad
-minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
-samba shout sid vocoder vorbis xml"
+IUSE="aac alsa ao avahi +cli curl fam flac ffmpeg jack libvisual mad
+minimal mms modplug mpg123 musepack nocxx ofa perl pulseaudio python ruby
+samba shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -30,9 +30,14 @@ RDEPEND="dev-libs/glib:2
 			media-libs/libogg )
 		ffmpeg? ( media-video/ffmpeg )
 		jack? ( media-sound/jack )
+		libvisual? ( media-libs/libvisual:0.4
+			media-plugins/libvisual-plugins:0.4
+			media-libs/libsdl
+			media-libs/libvorbis )
 		mad? ( media-libs/libmad )
 		mms? ( media-libs/libmms )
 		modplug? ( media-libs/libmodplug )
+		mpg123? ( >=media-sound/mpg123-1.5.1 )
 		musepack? ( media-libs/libmpcdec )
 		ofa? ( media-libs/libofa )
 		pulseaudio? ( media-sound/pulseaudio )
@@ -45,6 +50,7 @@ RDEPEND="dev-libs/glib:2
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
+		wavpack? ( media-sound/wavpack )
 		xml? ( dev-libs/libxml2 ) )"
 DEPEND="${RDEPEND}
 	dev-lang/python
@@ -57,13 +63,16 @@ src_compile() {
 	if use minimal; then
 		conf="--without-xmms2d=1"
 	else
-		pe="asf,asx,cue,diskwrite,equalizer,file,id3v2,icymetaint,karaoke"
-		pe="${pe},m3u,mp4,normalize,null,nulstripper,pls,replaygain,wave,xml"
+		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,id3v2"
+		pe="${pe},icymetaint,karaoke,m3u,mp4,normalize,null"
+		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
 		pd="cdda,coreaudio,gvfs,mac,nms,oss,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec curl avahi:daap \
 			aac:faad flac !nocxx:gme shout:ices jack curl:lastfm \
-			curl:lastfmeta mad mms modplug musepack ofa pulseaudio:pulse \
-			xml:rss samba vocoder vorbis xml:xspf; do
+			curl:lastfmeta mad mms modplug mpg123 musepack ofa \
+			pulseaudio:pulse xml:rss samba vocoder vorbis \
+			wavpack xml:xspf
+		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
@@ -71,7 +80,7 @@ src_compile() {
 	oe="pixmaps"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi cli !minimal:et !minimal:launcher \
-		fam:medialib-updater perl python ruby \
+		fam:medialib-updater perl python ruby libvisual:vistest \
 		!nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
