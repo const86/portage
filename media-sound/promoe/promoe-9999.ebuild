@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="media-sound/xmms2
-	$(qt4_min_version 4.2)"
+	>=x11-libs/qt-4.2:4"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/promoe.git"
 
