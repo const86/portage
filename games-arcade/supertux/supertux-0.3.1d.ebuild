@@ -1,7 +1,7 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit games
+inherit base games
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -22,10 +22,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
+PATCHES=( "${FILESDIR}/desktop.patch" )
+
 src_compile() {
-	sed -e "/Icon=/s/supertux/supertux2/" \
-		-e "/Categories=/s/=/=Application;/" \
-		-i supertux2.desktop
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_COMPILER=$(type -P $(tc-getCXX)) \
