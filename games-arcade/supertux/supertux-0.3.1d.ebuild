@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
-PATCHES=( "${FILESDIR}/desktop.patch" )
+PATCHES=( "${FILESDIR}/0.3.1-fix-fs-layout.patch" "${FILESDIR}/desktop.patch" )
 
 src_compile() {
 	cmake \
@@ -35,11 +35,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	dodir /usr/games/bin
-	mv "${D}/usr/games/supertux2" "${D}/usr/games/bin/"
 	cd "${D}/usr/share/doc"
-	mv supertux2 ${P}
-	cd "${D}/usr/share/pixmaps"
 	mv supertux.png supertux2.png
 	mv supertux.xpm supertux2.xpm
 	prepgamesdirs

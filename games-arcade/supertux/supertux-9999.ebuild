@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}
 	dev-util/cmake"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
-ESVN_PATCHES="cmakelists.patch desktop.patch"
+ESVN_PATCHES="9999-fix-fs-layout.patch 9999-install-fonts.patch 9999-cmake-check-if-svn-wc.patch  desktop.patch"
 
 src_compile() {
 	cmake \
@@ -32,8 +32,6 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	cd "${D}/usr/share/doc"
-	mv supertux2 ${P}
 	cd "${D}/usr/share/pixmaps"
 	mv supertux.png supertux2.png
 	mv supertux.xpm supertux2.xpm
