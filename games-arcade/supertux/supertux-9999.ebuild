@@ -8,7 +8,7 @@ HOMEPAGE="http://supertux.lethargik.org/"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 RDEPEND="virtual/opengl
 	media-libs/libsdl

@@ -1,0 +1,77 @@
+diff -upr supertux-0.3.1/src/addon_manager.cpp supertux-0.3.1.patched/src/addon_manager.cpp
+--- supertux-0.3.1/src/addon_manager.cpp	2008-01-04 01:59:28.000000000 +0500
++++ supertux-0.3.1.patched/src/addon_manager.cpp	2008-11-16 02:26:36.000000000 +0500
+@@ -25,6 +25,7 @@
+ #include <physfs.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "addon_manager.hpp"
+ #include "config.h"
+ #include "log.hpp"
+diff -upr supertux-0.3.1/src/console.hpp supertux-0.3.1.patched/src/console.hpp
+--- supertux-0.3.1/src/console.hpp	2008-01-04 01:59:27.000000000 +0500
++++ supertux-0.3.1.patched/src/console.hpp	2008-11-16 02:26:36.000000000 +0500
+@@ -22,6 +22,7 @@
+ 
+ #include <list>
+ #include <map>
++#include <memory>
+ #include <vector>
+ #include <string>
+ #include <sstream>
+diff -upr supertux-0.3.1/src/lisp/lexer.cpp supertux-0.3.1.patched/src/lisp/lexer.cpp
+--- supertux-0.3.1/src/lisp/lexer.cpp	2008-01-04 01:59:26.000000000 +0500
++++ supertux-0.3.1.patched/src/lisp/lexer.cpp	2008-11-16 02:26:36.000000000 +0500
+@@ -21,6 +21,7 @@
+ #include <sstream>
+ #include <stdexcept>
+ #include <iostream>
++#include <string.h>
+ 
+ #include "lexer.hpp"
+ 
+diff -upr supertux-0.3.1/src/sprite/sprite_manager.hpp supertux-0.3.1.patched/src/sprite/sprite_manager.hpp
+--- supertux-0.3.1/src/sprite/sprite_manager.hpp	2008-01-04 01:59:26.000000000 +0500
++++ supertux-0.3.1.patched/src/sprite/sprite_manager.hpp	2008-11-16 02:26:36.000000000 +0500
+@@ -21,6 +21,7 @@
+ #define SUPERTUX_SPRITE_MANAGER_H
+ 
+ #include <map>
++#include <string>
+ 
+ class SpriteData;
+ class Sprite;
+diff -upr supertux-0.3.1/src/textscroller.hpp supertux-0.3.1.patched/src/textscroller.hpp
+--- supertux-0.3.1/src/textscroller.hpp	2008-01-04 01:59:27.000000000 +0500
++++ supertux-0.3.1.patched/src/textscroller.hpp	2008-11-16 02:26:36.000000000 +0500
+@@ -24,6 +24,7 @@
+ #include <vector>
+ #include <string>
+ #include <map>
++#include <memory>
+ 
+ #include "screen.hpp"
+ #include "math/vector.hpp"
+diff -upr supertux-0.3.1/src/title.cpp supertux-0.3.1.patched/src/title.cpp
+--- supertux-0.3.1/src/title.cpp	2008-01-04 01:59:28.000000000 +0500
++++ supertux-0.3.1.patched/src/title.cpp	2008-11-16 01:41:23.000000000 +0500
+@@ -32,6 +32,7 @@
+ #include <SDL.h>
+ #include <SDL_image.h>
+ #include <physfs.h>
++#include <algorithm>
+ 
+ #include "title.hpp"
+ #include "mainloop.hpp"
+diff -upr supertux-0.3.1/src/video/sdl_texture.hpp supertux-0.3.1.patched/src/video/sdl_texture.hpp
+--- supertux-0.3.1/src/video/sdl_texture.hpp	2008-01-04 01:59:22.000000000 +0500
++++ supertux-0.3.1.patched/src/video/sdl_texture.hpp	2008-11-16 02:26:36.000000000 +0500
+@@ -21,6 +21,7 @@
+ #define __SDL_TEXTURE_HPP__
+ 
+ #include <config.h>
++#include <algorithm>
+ 
+ #include <SDL.h>
+ 
