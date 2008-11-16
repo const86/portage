@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 inherit base games
+inherit cmake-utils
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -28,19 +29,7 @@ PATCHES=(
 	"${FILESDIR}/desktop.patch"
 )
 
-src_compile() {
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_CXX_COMPILER=$(type -P $(tc-getCXX)) \
-		-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
-		|| die
-	emake || die
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die
-	cd "${D}/usr/share/doc"
-	mv supertux.png supertux2.png
-	mv supertux.xpm supertux2.xpm
+	cmake-utils_src_install
 	prepgamesdirs
 }
