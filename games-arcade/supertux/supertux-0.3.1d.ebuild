@@ -12,22 +12,18 @@ LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="amd64 x86"
 
-RDEPEND="virtual/opengl
+DEPEND="virtual/opengl
 	media-libs/libsdl
 	media-libs/sdl-image
 	dev-games/physfs
 	media-libs/openal"
-DEPEND="${RDEPEND}
-	dev-util/cmake"
 
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
-PATCHES=(
-	"${FILESDIR}/0.3.1-gcc43.patch"
+PATCHES=( "${FILESDIR}/0.3.1-gcc43.patch"
 	"${FILESDIR}/0.3.1-fix-fs-layout.patch"
-	"${FILESDIR}/desktop.patch"
-)
+	"${FILESDIR}/desktop.patch" )
 
 src_install() {
 	cmake-utils_src_install

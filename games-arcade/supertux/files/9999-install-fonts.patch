@@ -1,8 +1,6 @@
-Index: CMakeLists.txt
-===================================================================
---- CMakeLists.txt	(revision 5784)
-+++ CMakeLists.txt	(working copy)
-@@ -400,6 +402,7 @@
+--- CMakeLists.txt.orig	2008-11-02 23:21:49.000000000 +0400
++++ CMakeLists.txt	2008-12-02 23:15:37.583495520 +0400
+@@ -391,6 +391,7 @@
  INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/INSTALL ${SUPERTUX_SOURCE_DIR}/README ${SUPERTUX_SOURCE_DIR}/COPYING ${SUPERTUX_SOURCE_DIR}/WHATSNEW.txt DESTINATION ${INSTALL_SUBDIR_DOC})
  
  INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/data/credits.txt DESTINATION ${INSTALL_SUBDIR_SHARE})
