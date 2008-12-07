@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
 PATCHES=( "${FILESDIR}/0.3.1-gcc43.patch"
-	"${FILESDIR}/0.3.1-fix-fs-layout.patch"
+	"${FILESDIR}/0.3.1-fs-layout.patch"
 	"${FILESDIR}/desktop.patch" )
 
 src_install() {
