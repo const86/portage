@@ -19,7 +19,7 @@ DEPEND="virtual/opengl
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 ESVN_PATCHES="9999-fs-layout.patch
-	9999-install-fonts.patch
+	9999-fixes.patch
 	desktop.patch"
 
 EXTRA_ECONF="-D WERROR=OFF"

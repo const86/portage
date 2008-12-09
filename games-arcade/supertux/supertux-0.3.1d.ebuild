@@ -21,7 +21,7 @@ DEPEND="virtual/opengl
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
-PATCHES=( "${FILESDIR}/0.3.1-gcc43.patch"
+PATCHES=( "${FILESDIR}/0.3.1-fixes.patch"
 	"${FILESDIR}/0.3.1-fs-layout.patch"
 	"${FILESDIR}/desktop.patch" )
 
