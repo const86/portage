@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 DEPEND="media-sound/xmms2
-	x11-libs/qt:4"
+	|| ( ( x11-libs/qt-core:4
+			x11-libs/qt-gui:4 )
+		x11-libs/qt:4 )"
 
 RESTRICT="mirror"
 
