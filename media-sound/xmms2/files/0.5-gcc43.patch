@@ -1,0 +1,11 @@
+diff -upr xmms2-0.5DrLecter.orig/src/include/xmmsclient/xmmsclient++/helpers.h xmms2-0.5DrLecter/src/include/xmmsclient/xmmsclient++/helpers.h
+--- xmms2-0.5DrLecter.orig/src/include/xmmsclient/xmmsclient++/helpers.h	2008-06-15 22:31:38.000000000 +0500
++++ xmms2-0.5DrLecter/src/include/xmmsclient/xmmsclient++/helpers.h	2009-02-08 02:58:25.000253223 +0400
+@@ -32,6 +32,7 @@
+ #include <string>
+ #include <list>
+ #include <vector>
++#include <climits>
+ 
+ namespace Xmms
+ {
