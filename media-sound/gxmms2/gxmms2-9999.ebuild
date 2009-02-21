@@ -17,7 +17,7 @@ DEPEND="media-sound/xmms2
 	x11-libs/gtk+:2
 	gkrellm? ( app-admin/gkrellm:2 )"
 
-EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
+EGIT_REPO_URI="git://const.mimas.ru/${PN}/"
 
 src_compile() {
 	emake gxmms2 || die
