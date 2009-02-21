@@ -13,9 +13,8 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac alsa ao avahi +cli curl fam flac jack mad
-minimal mms modplug musepack nocxx ofa perl pulseaudio python ruby
-samba shout sid ssl vocoder vorbis xml"
+IUSE="aac alsa ao avahi curl fam flac jack mad minimal mms modplug musepack
+nocxx ofa perl pulseaudio python ruby samba shout sid ssl vocoder vorbis xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -72,11 +71,11 @@ src_compile() {
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
 	fi
-	oe="pixmaps"
+	oe="cli,pixmaps"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi cli !minimal:et !minimal:launcher \
-		fam:medialib-updater perl python ruby \
-		!nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
+	for o in avahi !minimal:et !minimal:launcher fam:medialib-updater perl \
+		python ruby !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib
+	do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"

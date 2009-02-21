@@ -11,14 +11,15 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi +cli curl fam flac ffmpeg jack libvisual mad
-minimal mms modplug mpg123 musepack nocxx ofa perl pulseaudio python ruby
-samba shout sid ssl vocoder vorbis wavpack xml"
+IUSE="aac alsa ao avahi curl fam flac ffmpeg jack libvisual mad minimal mms
+modplug mpg123 musepack nocxx ofa perl pulseaudio python readline ruby samba
+shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
 	!nocxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
+	readline? ( sys-libs/readline )
 	ruby? ( dev-lang/ruby )
 	!minimal? ( dev-db/sqlite:3
 		aac? ( media-libs/faad2 )
@@ -77,11 +78,12 @@ src_compile() {
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
 	fi
-	oe="pixmaps"
+	oe="cli,pixmaps"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi cli !minimal:et !minimal:launcher \
-		fam:medialib-updater perl python ruby libvisual:vistest \
-		!nocxx:xmmsclient++ !nocxx:xmmsclient++-glib; do
+	for o in avahi !minimal:et !minimal:launcher \
+		fam:medialib-updater readline:nycli perl python ruby \
+		libvisual:vistest !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib
+	do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
