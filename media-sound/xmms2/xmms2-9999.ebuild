@@ -64,7 +64,7 @@ src_compile() {
 	if use minimal; then
 		conf="--without-xmms2d=1"
 	else
-		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,id3v2"
+		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,id3v2"
 		pe="${pe},icymetaint,karaoke,m3u,mp4,normalize,null"
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
 		pd="cdda,coreaudio,gvfs,mac,nms,oss,waveout"
