@@ -1,5 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 EAPI="2"
 
@@ -14,11 +15,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-sound/xmms2[-nocxx]
-	|| ( ( x11-libs/qt-core:4
-			x11-libs/qt-gui:4 )
-		x11-libs/qt:4 )"
+	x11-libs/qt-core:4
+	x11-libs/qt-gui:4"
+RDEPEND="${DEPEND}"
 
-EGIT_REPO_URI="git://git.xmms.se/xmms2/promoe.git"
+EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
 src_compile() {
 	eqmake4 || die
