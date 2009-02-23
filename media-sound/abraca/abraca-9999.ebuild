@@ -1,7 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI="2"
+# $Header: $
 
 inherit git
 
@@ -13,9 +12,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-sound/xmms2"
+RDEPEND="media-sound/xmms2
+	x11-libs/gtk+"
 DEPEND="${RDEPEND}
-	dev-lang/vala[gtk]"
+	>=dev-lang/vala-0.5.6"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
