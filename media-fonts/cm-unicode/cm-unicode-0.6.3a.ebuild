@@ -1,5 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 inherit font
 
@@ -11,6 +12,7 @@ ftp://canopus.iacp.dvo.ru/pub/Font/${PN}/${P}-otf.tar.gz"
 LICENSE="X11"
 SLOT="0"
 KEYWORDS="amd64 x86"
+IUSE=""
 
 RESTRICT="mirror strip binchecks"
 

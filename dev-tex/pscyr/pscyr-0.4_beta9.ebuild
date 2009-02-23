@@ -1,5 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 MY_PN="PSCyr"
 MY_P="${MY_PN}-${PV/_/-}"
@@ -12,8 +13,10 @@ ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/${MY_P}-type1.tar.gz"
 LICENSE="LPPL-1.2"
 SLOT="0"
 KEYWORDS="amd64 x86"
+IUSE=""
 
 DEPEND="virtual/tex-base"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 RESTRICT="mirror"

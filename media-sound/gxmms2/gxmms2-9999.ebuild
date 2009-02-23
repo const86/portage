@@ -1,5 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 EAPI="1"
 
@@ -16,6 +17,7 @@ IUSE="gkrellm"
 DEPEND="media-sound/xmms2
 	x11-libs/gtk+:2
 	gkrellm? ( app-admin/gkrellm:2 )"
+RDEPEND="${DEPEND}"
 
 EGIT_REPO_URI="git://const.mimas.ru/${PN}/"
 
