@@ -10,13 +10,14 @@ depend() {
 
 start() {
 	ebegin "Starting IGMPproxy"
-	start-stop-daemon --start --exec /usr/bin/igmpproxy -- \
-		-c "${IGMPPROXY_CONFIG}"
+	start-stop-daemon --start --background \
+		--make-pidfile --pidfile /var/run/igmpproxy.pid \
+		--exec /usr/bin/igmpproxy -- "${IGMPPROXY_CONFIG}"
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping IGMPproxy"
-	start-stop-daemon --stop --exec /usr/bin/igmpproxy
+	start-stop-daemon --stop --pidfile /var/run/igmpproxy.pid
 	eend $?
 }

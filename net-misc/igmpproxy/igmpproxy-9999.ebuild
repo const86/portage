@@ -23,8 +23,3 @@ src_install() {
 	newinitd "${FILESDIR}/igmpproxy.init" igmpproxy
 	newconfd "${FILESDIR}/igmpproxy.conf" igmpproxy
 }
-
-pkg_postinst() {
-	einfo "As IGMPproxy is logging much directly to syslog,"
-	einfo "you should consider filtering to a separate file or drop it."
-}
