@@ -4,7 +4,7 @@
 
 inherit autotools base git
 
-DESCRIPTION="Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)"
+DESCRIPTION="Multicast Routing Daemon using only IGMP signalling"
 HOMEPAGE="http://sourceforge.net/projects/igmpproxy"
 
 LICENSE="GPL-2 Stanford"
