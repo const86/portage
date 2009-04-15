@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit git
+inherit git python
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -96,4 +96,13 @@ src_compile() {
 
 src_install() {
 	./waf --destdir="${D}" install || die "install failed"
+	use python && python_need_rebuild
+}
+
+pkg_postinst() {
+	use python && python_mod_optimize $(python_get_sitedir)/xmmsclient
+}
+
+pkg_postrm() {
+	use python && python_mod_cleanup $(python_get_sitedir)/xmmsclient
 }

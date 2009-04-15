@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit base
+inherit base python
 
 MY_P="${P}DrLecter"
 DESCRIPTION="X(cross)platform Music Multiplexing System"
@@ -88,4 +88,13 @@ src_compile() {
 
 src_install() {
 	./waf --destdir="${D}" install || die "install failed"
+	use python && python_need_rebuild
+}
+
+pkg_postinst() {
+	use python && python_mod_optimize $(python_get_sitedir)/xmmsclient
+}
+
+pkg_postrm() {
+	use python && python_mod_cleanup $(python_get_sitedir)/xmmsclient
 }
