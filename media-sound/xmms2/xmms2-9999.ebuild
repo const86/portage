@@ -65,10 +65,10 @@ src_compile() {
 	if use minimal; then
 		conf="--without-xmms2d=1"
 	else
-		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,id3v2"
-		pe="${pe},icymetaint,karaoke,m3u,mp4,normalize,null"
+		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,gvfs"
+		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
-		pd="cdda,coreaudio,gvfs,mac,nms,oss,waveout"
+		pd="cdda,coreaudio,mac,nms,oss,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec curl avahi:daap \
 			aac:faad flac !nocxx:gme shout:ices jack curl:lastfm \
 			curl:lastfmeta mad mms modplug mpg123 musepack ofa \
