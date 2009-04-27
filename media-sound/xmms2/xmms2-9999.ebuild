@@ -70,10 +70,9 @@ src_compile() {
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
 		pd="cdda,coreaudio,mac,nms,oss,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec curl avahi:daap \
-			aac:faad flac !nocxx:gme shout:ices jack curl:lastfm \
-			curl:lastfmeta mad mms modplug mpg123 musepack ofa \
-			pulseaudio:pulse xml:rss samba vocoder vorbis \
-			wavpack xml:xspf
+			aac:faad flac !nocxx:gme shout:ices jack mad mms \
+			modplug mpg123 musepack ofa pulseaudio:pulse xml:rss \
+			samba vocoder vorbis wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
