@@ -1,4 +1,5 @@
 media-sound/gxmms2:gkrellm - Build GKrellM plugin
+media-sound/xmms2:cdda - Build cdda plugin
 media-sound/xmms2:libvisual - Build visualization client
 media-sound/xmms2:mms - Build MMS (Microsoft Media Server) output plugin
 media-sound/xmms2:mpg123 - Build mpg123 plugin
