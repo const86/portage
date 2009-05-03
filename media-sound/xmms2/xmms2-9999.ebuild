@@ -33,7 +33,7 @@ RDEPEND="dev-libs/glib:2
 		flac? ( media-libs/flac
 			media-libs/libogg )
 		ffmpeg? ( media-video/ffmpeg )
-		jack? ( media-sound/jack )
+		jack? ( media-sound/jack-audio-connection-kit )
 		libvisual? ( media-libs/libvisual:0.4
 			media-plugins/libvisual-plugins:0.4
 			media-libs/libsdl
