@@ -14,9 +14,9 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi curl fam flac ffmpeg jack libvisual mad minimal mms
-modplug mpg123 musepack nocxx ofa perl pulseaudio python readline ruby samba
-shout sid ssl vocoder vorbis wavpack xml"
+IUSE="aac alsa ao avahi cdda curl fam flac ffmpeg jack libvisual mad minimal
+mms modplug mpg123 musepack nocxx ofa perl pulseaudio python readline ruby
+samba shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -29,6 +29,8 @@ RDEPEND="dev-libs/glib:2
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
 		avahi? ( net-dns/avahi )
+		cdda? ( dev-libs/libcdio
+			media-libs/libdiscid )
 		curl? ( net-misc/curl )
 		flac? ( media-libs/flac
 			media-libs/libogg )
@@ -71,11 +73,11 @@ src_compile() {
 		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,gvfs"
 		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
-		pd="cdda,coreaudio,mac,nms,oss,waveout"
-		for p in alsa ssl:airplay ao ffmpeg:avcodec curl avahi:daap \
-			aac:faad flac !nocxx:gme shout:ices jack mad mms \
-			modplug mpg123 musepack ofa pulseaudio:pulse xml:rss \
-			samba vocoder vorbis wavpack xml:xspf
+		pd="coreaudio,mac,nms,oss,waveout"
+		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
+			avahi:daap aac:faad flac !nocxx:gme shout:ices jack \
+			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
+			xml:rss samba vocoder vorbis wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
