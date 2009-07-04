@@ -1,0 +1,15 @@
+diff --git a/wscript b/wscript
+index e6eef14..696959c 100644
+--- a/wscript
++++ b/wscript
+@@ -430,10 +430,3 @@ def set_options(opt):
+ 
+     for o in optional_subdirs + subdirs:
+         opt.sub_options(o)
+-
+-def shutdown():
+-    if Params.g_commands['install'] and os.geteuid() == 0 and libprefix:
+-        ldconfig = '/sbin/ldconfig'
+-        if os.path.isfile(ldconfig):
+-            try: os.spawnvp(os.P_WAIT, 'ldconfig', ['', libprefix])
+-            except: pass

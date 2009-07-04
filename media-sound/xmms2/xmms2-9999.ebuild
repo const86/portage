@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 	python? ( dev-python/pyrex )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
+EGIT_PATCHES=( "${FILESDIR}/9999-no-ldconfig.patch" )
 
 src_compile() {
 	local conf oe od pe pd

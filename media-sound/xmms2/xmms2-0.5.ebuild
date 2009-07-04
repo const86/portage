@@ -56,7 +56,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 RESTRICT="mirror"
 
-PATCHES=( "${FILESDIR}/0.5-gcc43.patch" )
+PATCHES=( "${FILESDIR}/0.5-gcc43.patch"
+	"${FILESDIR}/0.5-no-ldconfig.patch" )
 
 src_compile() {
 	local conf oe od pe pd

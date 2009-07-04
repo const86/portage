@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit python
+inherit base python
 
 MY_P="${P}DrMattDestruction"
 DESCRIPTION="X(cross)platform Music Multiplexing System"
@@ -64,6 +64,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 RESTRICT="mirror"
+
+PATCHES=( "${FILESDIR}/0.6-no-ldconfig.patch" )
 
 src_compile() {
 	local conf oe od pe pd
