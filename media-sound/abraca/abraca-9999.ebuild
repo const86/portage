@@ -15,7 +15,7 @@ IUSE=""
 RDEPEND="media-sound/xmms2
 	x11-libs/gtk+"
 DEPEND="${RDEPEND}
-	>=dev-lang/vala-0.5.6"
+	>=dev-lang/vala-0.7.5"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
