@@ -15,7 +15,7 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-EGIT_REPO_URI="git://const.mimas.ru/${PN}/"
+EGIT_REPO_URI="git://${PN}.git.sourceforge.net/gitroot/${PN}/"
 EGIT_BOOTSTRAP="eautoreconf"
 CONFIG_CHECK="IP_MULTICAST IP_MROUTE"
 
