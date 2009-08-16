@@ -13,7 +13,7 @@ start() {
 	start-stop-daemon --start --background \
 		--make-pidfile --pidfile /var/run/igmpproxy.pid \
 		--exec /usr/sbin/igmpproxy -- \
-		${IGMPPROXY_OPTS} "${IGMPPROXY_CONFIG}"
+		${IGMPPROXY_OPTS} "${IGMPPROXY_CONFIG:-/etc/igmpproxy.conf}"
 	eend $?
 }
 

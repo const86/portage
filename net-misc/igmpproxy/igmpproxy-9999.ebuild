@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit autotools base git
+inherit autotools base git linux-info
 
 DESCRIPTION="Multicast Routing Daemon using only IGMP signalling"
 HOMEPAGE="http://sourceforge.net/projects/igmpproxy"
@@ -17,9 +17,10 @@ RDEPEND=""
 
 EGIT_REPO_URI="git://const.mimas.ru/${PN}/"
 EGIT_BOOTSTRAP="eautoreconf"
+CONFIG_CHECK="IP_MULTICAST IP_MROUTE"
 
 src_install() {
 	base_src_install
-	newinitd "${FILESDIR}/igmpproxy.init" igmpproxy
-	newconfd "${FILESDIR}/igmpproxy.conf" igmpproxy
+	newinitd "${FILESDIR}/${PN}-init.d" ${PN} || die
+	newconfd "${FILESDIR}/${PN}-conf.d" ${PN} || die
 }
