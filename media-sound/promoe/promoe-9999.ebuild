@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils git qt4
+inherit eutils qt4 git
 
 DESCRIPTION="WinAMP2 skinable XMMS2 client"
 HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Promoe"
@@ -28,6 +28,7 @@ src_compile() {
 
 src_install() {
 	dobin promoe || die
+	doman promoe.1 || die
 	dodoc AUTHORS README TODO
 	newicon data/icon.png promoe.png
 	make_desktop_entry promoe Promoe
