@@ -6,4 +6,3 @@ media-sound/xmms2:ofa - Build OFA (Open Fingerprint Architecture) plugin
 media-sound/xmms2:shout - Build Icecast output plugin
 media-sound/xmms2:sid - Build SID (Commodore 64 Audio) plugin
 media-sound/xmms2:vocoder - Build vocoder plugin
-net-p2p/eserver:smp - Use SMP optimized executable
