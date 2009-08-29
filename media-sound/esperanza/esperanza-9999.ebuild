@@ -21,8 +21,11 @@ RDEPEND="${DEPEND}"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
-src_compile() {
+src_configure() {
 	./configure --prefix=/usr || die
+}
+
+src_compile() {
 	emake || die
 }
 

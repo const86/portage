@@ -22,8 +22,11 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="mirror"
 
-src_compile() {
+src_configure() {
 	./configure --prefix=/usr || die
+}
+
+src_compile() {
 	emake || die
 }
 
