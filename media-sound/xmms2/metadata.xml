@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <use>
-    <flag name="cdda">Build cdda plugin</flag>
     <flag name="libvisual">Build visualization client</flag>
     <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
     <flag name="mpg123">Build mpg123 plugin</flag>
