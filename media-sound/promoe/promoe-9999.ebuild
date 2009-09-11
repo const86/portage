@@ -11,7 +11,7 @@ HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Promoe"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="media-sound/xmms2[-nocxx]
