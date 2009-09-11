@@ -26,3 +26,18 @@ ewaf() {
 	done
 	CCFLAGS=${CFLAGS} LINKFLAGS=${LDFLAGS} ./waf "${opts[@]}" "${args[@]}"
 }
+
+waf_src_configure() {
+	ewaf --prefix=/usr --conf-prefix=/etc "$@" configure \
+		|| die "waf configure failed"
+}
+
+waf_src_compile() {
+	ewaf build || die "waf build failed"
+}
+
+waf_src_install() {
+	ewaf --destdir="${D}" install || die "waf install failed"
+}
+
+EXPORT_FUNCTIONS src_configure src_compile src_install
