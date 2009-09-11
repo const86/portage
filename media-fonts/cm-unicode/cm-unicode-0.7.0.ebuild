@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-otf.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
