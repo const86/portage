@@ -11,7 +11,7 @@ HOMEPAGE="http://supertux.lethargik.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="games-arcade/supertux:2
