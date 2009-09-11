@@ -11,7 +11,7 @@ HOMEPAGE="http://wejp.k.vu/projects/xmms2/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="gkrellm"
 
 DEPEND="media-sound/xmms2
