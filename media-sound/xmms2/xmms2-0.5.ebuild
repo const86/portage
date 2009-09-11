@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
+EAPI="2"
 
-inherit base python
+inherit base python waf
 
 MY_P="${P}DrLecter"
 DESCRIPTION="X(cross)platform Music Multiplexing System"
@@ -59,7 +59,7 @@ RESTRICT="mirror"
 PATCHES=( "${FILESDIR}/0.5-gcc43.patch"
 	"${FILESDIR}/0.5-no-ldconfig.patch" )
 
-src_compile() {
+src_configure() {
 	local conf oe od pe pd
 	if use minimal; then
 		conf="--without-xmms2d=1"
@@ -85,14 +85,11 @@ src_compile() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	CCFLAGS=${CFLAGS} LINKFLAGS=${LDFLAGS} ./waf \
-		--prefix=/usr --conf-prefix=/etc ${conf} configure \
-		|| die "configure failed"
-	./waf ${MAKEOPTS} build || die "build failed"
+	waf_src_configure ${conf}
 }
 
 src_install() {
-	./waf --destdir="${D}" install || die "install failed"
+	waf_src_install
 	use python && python_need_rebuild
 }
 
