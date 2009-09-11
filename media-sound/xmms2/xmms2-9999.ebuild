@@ -61,7 +61,6 @@ DEPEND="${RDEPEND}
 	python? ( dev-python/pyrex )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
-EGIT_PATCHES=( "${FILESDIR}/9999-no-ldconfig.patch" )
 
 src_configure() {
 	local conf oe od pe pd
@@ -94,7 +93,7 @@ src_configure() {
 }
 
 src_install() {
-	waf_src_install
+	waf_src_install --without-ldconfig
 	use python && python_need_rebuild
 }
 
