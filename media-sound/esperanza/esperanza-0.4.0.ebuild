@@ -12,7 +12,7 @@ SRC_URI="http://exodus.xmms.se/~tru/${PN}/0.4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-sound/xmms2[-nocxx]
