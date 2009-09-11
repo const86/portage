@@ -33,11 +33,11 @@ waf_src_configure() {
 }
 
 waf_src_compile() {
-	ewaf build || die "waf build failed"
+	ewaf "$@" build || die "waf build failed"
 }
 
 waf_src_install() {
-	ewaf --destdir="${D}" install || die "waf install failed"
+	ewaf --destdir="${D}" "$@" install || die "waf install failed"
 }
 
 EXPORT_FUNCTIONS src_configure src_compile src_install
