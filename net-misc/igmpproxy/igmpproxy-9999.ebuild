@@ -9,7 +9,7 @@ HOMEPAGE="http://sourceforge.net/projects/igmpproxy"
 
 LICENSE="GPL-2 Stanford"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=""
