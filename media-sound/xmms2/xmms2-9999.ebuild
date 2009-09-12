@@ -89,7 +89,7 @@ src_configure() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	waf_src_configure ${conf}
+	ewaf --prefix=/usr ${conf} configure || die "waf configure failed"
 }
 
 src_install() {
