@@ -28,7 +28,8 @@ ewaf() {
 }
 
 waf_src_configure() {
-	ewaf --prefix=/usr --conf-prefix=/etc "$@" configure \
+	ewaf --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib \
+		--libdir=/usr/$(get_libdir) "$@" configure \
 		|| die "waf configure failed"
 }
 
