@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils qt4 git
+inherit git waf
 
 DESCRIPTION="WinAMP2 skinable XMMS2 client"
 HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Promoe"
@@ -20,16 +20,3 @@ DEPEND="media-sound/xmms2[-nocxx]
 RDEPEND="${DEPEND}"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
-
-src_compile() {
-	eqmake4 || die
-	emake || die
-}
-
-src_install() {
-	dobin promoe || die
-	doman promoe.1 || die
-	dodoc AUTHORS README TODO
-	newicon data/icon.png promoe.png
-	make_desktop_entry promoe Promoe
-}
