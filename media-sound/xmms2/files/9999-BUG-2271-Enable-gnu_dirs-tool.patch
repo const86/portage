@@ -1,0 +1,371 @@
+From 7b6213c2444bf629fe261bb5ac213774cfa4682f Mon Sep 17 00:00:00 2001
+From: Constantin Baranov <const@mimas.ru>
+Date: Tue, 22 Sep 2009 00:23:06 +0500
+Subject: [PATCH] BUG(2271): Enable gnu_dirs tool
+
+
+Signed-off-by: Constantin Baranov <const@mimas.ru>
+---
+ pixmaps/wscript                           |    5 +---
+ src/clients/cli/wscript                   |    1 +
+ src/clients/et/wscript                    |    1 +
+ src/clients/launcher/wscript              |    1 +
+ src/clients/lib/xmmsclient++-glib/wscript |    1 +
+ src/clients/lib/xmmsclient++/wscript      |    1 +
+ src/clients/lib/xmmsclient-cf/wscript     |    1 +
+ src/clients/lib/xmmsclient-ecore/wscript  |    1 +
+ src/clients/lib/xmmsclient-glib/wscript   |    1 +
+ src/clients/lib/xmmsclient/wscript        |    1 +
+ src/clients/mdns/avahi/wscript            |    2 +
+ src/clients/mdns/dns_sd/wscript           |    1 +
+ src/clients/medialib-updater/wscript      |    1 +
+ src/clients/nycli/wscript                 |    1 +
+ src/clients/vistest/wscript               |    4 +++
+ src/include/wscript                       |    2 +-
+ src/include/xmms/wscript                  |    9 ++-----
+ src/xmms/wscript                          |    1 +
+ wscript                                   |   34 +++++-----------------------
+ 19 files changed, 30 insertions(+), 39 deletions(-)
+
+diff --git a/pixmaps/wscript b/pixmaps/wscript
+index 89e231a..c5941d0 100644
+--- a/pixmaps/wscript
++++ b/pixmaps/wscript
+@@ -22,10 +22,7 @@ def build(bld):
+         bld.install_files("${PIXMAP_DIR}", image)
+ 
+ def configure(conf):
+-    if Options.options.pixmapdir is not None:
+-        conf.env["PIXMAP_DIR"] = Options.options.pixmapdir
+-    else:
+-        conf.env["PIXMAP_DIR"] = os.path.join(conf.env["PREFIX"], "share", "pixmaps")
++    conf.env["PIXMAP_DIR"] = os.path.join(conf.env["DATAROOTDIR"], "pixmaps")
+ 
+     if not conf.env["PIXMAP_DIR"]:
+         return False
+diff --git a/src/clients/cli/wscript b/src/clients/cli/wscript
+index 84ddec7..18f3701 100644
+--- a/src/clients/cli/wscript
++++ b/src/clients/cli/wscript
+@@ -2,6 +2,7 @@ import Options
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'xmms2'
+     obj.source = """
+         cmd_config.c
+diff --git a/src/clients/et/wscript b/src/clients/et/wscript
+index b7ed151..66da0d2 100644
+--- a/src/clients/et/wscript
++++ b/src/clients/et/wscript
+@@ -3,6 +3,7 @@ import Options
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'xmms2-et'
+     obj.source = ['xmms2-et.c']
+     obj.includes = '. ../../.. ../../include'
+diff --git a/src/clients/launcher/wscript b/src/clients/launcher/wscript
+index 330cbd2..f5e6b60 100644
+--- a/src/clients/launcher/wscript
++++ b/src/clients/launcher/wscript
+@@ -2,6 +2,7 @@ import Options
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'xmms2-launcher'
+     obj.source = ['xmms2-launcher.c']
+     obj.includes = '../../.. ../../include'
+diff --git a/src/clients/lib/xmmsclient++-glib/wscript b/src/clients/lib/xmmsclient++-glib/wscript
+index 2d03901..ff416f2 100644
+--- a/src/clients/lib/xmmsclient++-glib/wscript
++++ b/src/clients/lib/xmmsclient++-glib/wscript
+@@ -1,6 +1,7 @@
+ from waftools import tool
+ def build(bld):
+     lib = bld.new_task_gen('cxx', 'shlib')
++    lib.install_path = bld.env['LIBDIR']
+     lib.target = 'xmmsclient++-glib'
+     lib.source = 'xmmsclient++-glib.cpp'
+     lib.uselib = 'glib2'
+diff --git a/src/clients/lib/xmmsclient++/wscript b/src/clients/lib/xmmsclient++/wscript
+index a340f47..f265293 100644
+--- a/src/clients/lib/xmmsclient++/wscript
++++ b/src/clients/lib/xmmsclient++/wscript
+@@ -3,6 +3,7 @@ from waftools import tool
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cxx', 'shlib')
++    obj.install_path = bld.env['LIBDIR']
+     obj.target = 'xmmsclient++'
+     obj.includes = '../../../.. ../../../include ../../../includepriv'
+     obj.source = """
+diff --git a/src/clients/lib/xmmsclient-cf/wscript b/src/clients/lib/xmmsclient-cf/wscript
+index b1cffaa..5e05aab 100644
+--- a/src/clients/lib/xmmsclient-cf/wscript
++++ b/src/clients/lib/xmmsclient-cf/wscript
+@@ -3,6 +3,7 @@ import sys
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'shlib')
++    obj.install_path = bld.env['LIBDIR']
+     obj.target = 'xmmsclient-cf'
+     obj.includes = '../../../.. ../../../include'
+     obj.source = 'xmmsclient-cf.c'
+diff --git a/src/clients/lib/xmmsclient-ecore/wscript b/src/clients/lib/xmmsclient-ecore/wscript
+index 53614dd..a881d98 100644
+--- a/src/clients/lib/xmmsclient-ecore/wscript
++++ b/src/clients/lib/xmmsclient-ecore/wscript
+@@ -2,6 +2,7 @@ from waftools import tool
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'shlib')
++    obj.install_path = bld.env['LIBDIR']
+     obj.target = 'xmmsclient-ecore'
+     obj.includes = '../../../.. ../../../include'
+     obj.source = 'xmmsclient-ecore.c'
+diff --git a/src/clients/lib/xmmsclient-glib/wscript b/src/clients/lib/xmmsclient-glib/wscript
+index a183257..bcc1779 100644
+--- a/src/clients/lib/xmmsclient-glib/wscript
++++ b/src/clients/lib/xmmsclient-glib/wscript
+@@ -2,6 +2,7 @@ from waftools import tool
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'shlib')
++    obj.install_path = bld.env['LIBDIR']
+     obj.target = 'xmmsclient-glib'
+     obj.includes = '../../../.. ../../../include'
+     obj.source = 'xmmsclient-glib.c'
+diff --git a/src/clients/lib/xmmsclient/wscript b/src/clients/lib/xmmsclient/wscript
+index 85261f4..2181143 100644
+--- a/src/clients/lib/xmmsclient/wscript
++++ b/src/clients/lib/xmmsclient/wscript
+@@ -3,6 +3,7 @@ from logging import warning
+ 
+ def build(bld):
+     obj = bld.new_task_gen("cc", "shlib")
++    obj.install_path = bld.env['LIBDIR']
+     obj.target = "xmmsclient"
+     obj.includes = "../../../.. ../../../include ../../../includepriv"
+     obj.source = """
+diff --git a/src/clients/mdns/avahi/wscript b/src/clients/mdns/avahi/wscript
+index fdc6851..de5aa29 100644
+--- a/src/clients/mdns/avahi/wscript
++++ b/src/clients/mdns/avahi/wscript
+@@ -2,6 +2,7 @@ import Constants
+ 
+ def build(bld):
+   obj = bld.new_task_gen('cc', 'program')
++  obj.install_path = bld.env['BINDIR']
+   obj.target = 'xmms2-mdns-avahi'
+   obj.source = ['mdns-avahi.c']
+   obj.includes = '. ../../../.. ../../../include'
+@@ -15,6 +16,7 @@ def build(bld):
+   obj.chmod = Constants.O755
+ 
+   find = bld.new_task_gen('cc', 'program')
++  find.install_path = bld.env['BINDIR']
+   find.target = 'xmms2-find-avahi'
+   find.source = ['find-avahi.c']
+   find.uselib = 'avahiclient'
+diff --git a/src/clients/mdns/dns_sd/wscript b/src/clients/mdns/dns_sd/wscript
+index e82288d..999c9b8 100644
+--- a/src/clients/mdns/dns_sd/wscript
++++ b/src/clients/mdns/dns_sd/wscript
+@@ -3,6 +3,7 @@ import Options
+ 
+ def build(bld):
+   obj = bld.new_task_gen('cc', 'program')
++  obj.install_path = bld.env['BINDIR']
+   obj.target = 'xmms2-mdns-dnssd'
+   obj.source = ['mdns-dnssd.c']
+   obj.includes = '. ../../../.. ../../../include'
+diff --git a/src/clients/medialib-updater/wscript b/src/clients/medialib-updater/wscript
+index 0d34ee4..c27f3d1 100644
+--- a/src/clients/medialib-updater/wscript
++++ b/src/clients/medialib-updater/wscript
+@@ -2,6 +2,7 @@ import Constants
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'xmms2-mlib-updater'
+     obj.source = "main.c"
+     obj.includes = '. ../../.. ../../include'
+diff --git a/src/clients/nycli/wscript b/src/clients/nycli/wscript
+index 9d0965f..d48bc18 100644
+--- a/src/clients/nycli/wscript
++++ b/src/clients/nycli/wscript
+@@ -1,5 +1,6 @@
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'nyxmms2'
+     obj.source = """main.c
+                     cli_infos.c
+diff --git a/src/clients/vistest/wscript b/src/clients/vistest/wscript
+index f4c856d..5e26822 100644
+--- a/src/clients/vistest/wscript
++++ b/src/clients/vistest/wscript
+@@ -2,6 +2,7 @@ import Options
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'vistest'
+     obj.source = """vistest.c""".split()
+     obj.includes = '. ../../.. ../../include'
+@@ -9,6 +10,7 @@ def build(bld):
+     obj.uselib = 'glib2'
+ 
+     obj = bld.new_task_gen('cc', 'program')
++    obj.install_path = bld.env['BINDIR']
+     obj.target = 'vistest-fft'
+     obj.source = """vistest_fft.c""".split()
+     obj.includes = '. ../../.. ../../include'
+@@ -17,6 +19,7 @@ def build(bld):
+ 
+     if bld.env['LIB_vorbisenc']:
+         obj = bld.new_task_gen('cc', 'program')
++        obj.install_path = bld.env['BINDIR']
+         obj.target = 'xmms2-ripper'
+         obj.source = 'ripper.c'
+         obj.includes = '. ../../.. ../../include'
+@@ -25,6 +28,7 @@ def build(bld):
+ 
+     if bld.env['LIB_visual'] and bld.env['LIB_sdl']:
+         obj = bld.new_task_gen('cc', 'program')
++        obj.install_path = bld.env['BINDIR']
+         obj.target = 'xmms2-libvisual'
+         obj.source = 'libvisual.c'
+         obj.includes = '. ../../.. ../../include'
+diff --git a/src/include/wscript b/src/include/wscript
+index ffe008e..267a5af 100644
+--- a/src/include/wscript
++++ b/src/include/wscript
+@@ -5,7 +5,7 @@ def build(bld):
+     for p in paths:
+         bld.add_subdirs(p)
+         f = [os.path.join(p, a) for a in os.listdir(os.path.join('src','include',p)) if a.endswith('.h')]
+-        bld.install_files('${PREFIX}/include/xmms2/' +  p, " ".join(f))
++        bld.install_files(os.path.join(bld.env['INCLUDEDIR'], 'xmms2', p), " ".join(f))
+ 
+ def configure(conf):
+     conf.sub_config("xmms")
+diff --git a/src/include/xmms/wscript b/src/include/xmms/wscript
+index 453f3d7..4952d42 100644
+--- a/src/include/xmms/wscript
++++ b/src/include/xmms/wscript
+@@ -15,13 +15,10 @@ def configure(conf):
+ 
+     defs = {}
+ 
+-    defs['PKGLIBDIR'] = os.path.join(conf.env['PREFIX'],
+-                                     'lib', 'xmms2')
++    defs['PKGLIBDIR'] = os.path.join(conf.env['LIBDIR'], 'xmms2')
+     defs['BINDIR']    = conf.env['BINDIR']
+-    defs['SHAREDDIR'] = os.path.join(conf.env['PREFIX'],
+-                                     'share', 'xmms2')
+-    defs['SCRIPTDIR'] = os.path.join(conf.env['PREFIX'],
+-                                     'share', 'xmms2', 'scripts', 'startup.d')
++    defs['SHAREDDIR'] = os.path.join(conf.env['DATADIR'], 'xmms2')
++    defs['SCRIPTDIR'] = os.path.join(defs['SHAREDDIR'], 'scripts', 'startup.d')
+ 
+     defs['XMMS_VERSION'] = conf.env['VERSION']
+ 
+diff --git a/src/xmms/wscript b/src/xmms/wscript
+index ebedc0f..83190b2 100644
+--- a/src/xmms/wscript
++++ b/src/xmms/wscript
+@@ -45,6 +45,7 @@ def build(bld):
+     env = bld.env
+ 
+     prog = bld.new_task_gen('cc', 'program')
++    prog.install_path = bld.env['BINDIR']
+     prog.target = 'xmms2d'
+     prog.includes = '. ../.. ../include ../includepriv'
+     prog.source = ["main.c"]
+diff --git a/wscript b/wscript
+index dfd9c1b..40faac8 100644
+--- a/wscript
++++ b/wscript
+@@ -102,9 +102,9 @@ def build(bld):
+                'NAME': name,
+                 'LIB': lib,
+              'PREFIX': bld.env['PREFIX'],
+-             'BINDIR': os.path.join("${prefix}", "bin"),
+-             'LIBDIR': os.path.join("${prefix}", "lib"),
+-         'INCLUDEDIR': os.path.join("${prefix}", "include", "xmms2"),
++             'BINDIR': bld.env['BINDIR'],
++             'LIBDIR': bld.env['LIBDIR'],
++         'INCLUDEDIR': os.path.join(bld.env['INCLUDEDIR'], "xmms2"),
+             'VERSION': bld.env["VERSION"],
+         }
+         obj.install_path = '${PKGCONFIGDIR}'
+@@ -247,11 +247,7 @@ def configure(conf):
+         conf.env["BUILD_XMMS2D"] = True
+         subdirs.insert(0, "src/xmms")
+ 
+-    if Options.options.manualdir:
+-        conf.env["MANDIR"] = Options.options.manualdir
+-    else:
+-        conf.env["MANDIR"] = os.path.join(conf.env["PREFIX"], "share", "man")
+-
++    conf.check_tool('gnu_dirs')
+     conf.check_tool('man', tooldir=os.path.abspath('waftools'))
+     conf.check_tool('misc')
+     conf.check_tool('gcc')
+@@ -299,21 +295,11 @@ def configure(conf):
+     conf.env['XMMS_PKGCONF_FILES'] = []
+     conf.env['XMMS_OUTPUT_PLUGINS'] = [(-1, "NONE")]
+ 
+-    if Options.options.bindir:
+-        conf.env["BINDIR"] = Options.options.bindir
+-    else:
+-        conf.env["BINDIR"] = os.path.join(conf.env["PREFIX"], "bin")
+-
+-    if Options.options.libdir:
+-        conf.env["LIBDIR"] = Options.options.libdir
+-    else:
+-        conf.env["LIBDIR"] = os.path.join(conf.env["PREFIX"], "lib")
+-
+     if Options.options.pkgconfigdir:
+         conf.env['PKGCONFIGDIR'] = Options.options.pkgconfigdir
+         print(conf.env['PKGCONFIGDIR'])
+     else:
+-        conf.env['PKGCONFIGDIR'] = os.path.join(conf.env["PREFIX"], "lib", "pkgconfig")
++        conf.env['PKGCONFIGDIR'] = os.path.join(conf.env["LIBDIR"], "pkgconfig")
+ 
+     if Options.options.config_prefix:
+         for dir in Options.options.config_prefix:
+@@ -446,10 +432,8 @@ def _list_cb(option, opt, value, parser):
+     setattr(parser.values, option.dest, vals)
+ 
+ def set_options(opt):
+-    opt.add_option('--prefix', default=Options.default_prefix, dest='prefix',
+-                   help="installation prefix (configuration only) [Default: '%s']" % Options.default_prefix)
+-
+     opt.tool_options('gcc')
++    opt.tool_options('gnu_dirs')
+ 
+     opt.add_option('--with-custom-version', type='string',
+                    dest='customversion', help="Override git commit hash version")
+@@ -473,12 +457,6 @@ def set_options(opt):
+                    help="Specify a directory to prepend to configuration prefix")
+     opt.add_option('--without-xmms2d', action='store_true', default=False,
+                    dest='without_xmms2d', help="Skip build of xmms2d")
+-    opt.add_option('--with-mandir', type='string', dest='manualdir',
+-                   help="Specify directory where to install man pages")
+-    opt.add_option('--with-bindir', type='string', dest='bindir',
+-                   help="Specify directory where to install executables")
+-    opt.add_option('--with-libdir', type='string', dest='libdir',
+-                   help="Specify directory where to install libraries")
+     opt.add_option('--with-pkgconfigdir', type='string', dest='pkgconfigdir',
+                    help="Specify directory where to install pkg-config files")
+     opt.add_option('--with-target-platform', type='string',
+-- 
+1.6.5.rc1
+

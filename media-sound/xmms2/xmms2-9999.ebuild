@@ -62,6 +62,9 @@ DEPEND="${RDEPEND}
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 
+EGIT_PATCHES=( "${FILESDIR}/9999-BUG-2271-Enable-gnu_dirs-tool.patch"
+	"${FILESDIR}/9999-BUG-2271-Fix-Python-site-directory-detection.patch" )
+
 src_configure() {
 	local conf oe od pe pd
 	if use minimal; then
@@ -89,7 +92,7 @@ src_configure() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	ewaf --prefix=/usr ${conf} configure || die "waf configure failed"
+	waf_src_configure ${conf}
 }
 
 src_install() {
