@@ -1,0 +1,34 @@
+From 324a42fab8cf7b94f9f65ee855dc3d58097b2a52 Mon Sep 17 00:00:00 2001
+From: Constantin Baranov <const@mimas.ru>
+Date: Wed, 23 Sep 2009 00:19:59 +0500
+Subject: [PATCH] BUG(2271): Fix Python site directory detection
+
+Signed-off-by: Constantin Baranov <const@mimas.ru>
+---
+ src/clients/lib/python/wscript |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/src/clients/lib/python/wscript b/src/clients/lib/python/wscript
+index b31ac6e..1e4471a 100644
+--- a/src/clients/lib/python/wscript
++++ b/src/clients/lib/python/wscript
+@@ -1,6 +1,7 @@
+ import Configure
+ from logging import warning
+ import os
++import distutils.sysconfig
+ 
+ def build(bld):
+     obj = bld.new_task_gen('cc', 'shlib', 'pyext')
+@@ -20,6 +21,8 @@ def build(bld):
+     bld.install_files('${xmmsclient_PYTHONDIR}', 'xmmsclient/qt3.py')
+ 
+ def configure(conf):
++    if 'PYTHONDIR' not in os.environ:
++        os.environ['PYTHONDIR'] = distutils.sysconfig.get_python_lib()
+     conf.check_tool('python')
+     if not conf.env['PYTHON']:
+         return False
+-- 
+1.6.5.rc1
+

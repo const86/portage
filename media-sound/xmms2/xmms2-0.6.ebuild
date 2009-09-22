@@ -65,7 +65,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 RESTRICT="mirror"
 
-PATCHES=( "${FILESDIR}/0.6-no-ldconfig.patch" )
+PATCHES=( "${FILESDIR}/0.6-BUG-2256-Make-running-ldconfig-optional.patch"
+	"${FILESDIR}/0.6-BUG-2271-Enable-gnu_dirs-tool.patch"
+	"${FILESDIR}/0.6-BUG-2271-Fix-Python-site-directory-detection.patch" )
 
 src_configure() {
 	local conf oe od pe pd
@@ -94,11 +96,11 @@ src_configure() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	ewaf --prefix=/usr ${conf} configure || die "waf configure failed"
+	waf_src_configure ${conf}
 }
 
 src_install() {
-	waf_src_install
+	waf_src_install --without-ldconfig
 	use python && python_need_rebuild
 }
 
