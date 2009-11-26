@@ -23,7 +23,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-${PV%[a-z]}"
 RESTRICT="mirror"
 
-PATCHES=( "${FILESDIR}/0.3.1-fixes.patch"
+PATCHES=( "${FILESDIR}/0.3.1-upstream.patch"
+	"${FILESDIR}/0.3.1-fixes.patch"
 	"${FILESDIR}/0.3.1-fs-layout.patch"
 	"${FILESDIR}/desktop.patch" )
 

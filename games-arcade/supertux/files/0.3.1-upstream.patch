@@ -1,0 +1,35 @@
+Index: src/main.cpp
+===================================================================
+--- src/main.cpp	(revision 5249)
++++ src/main.cpp	(revision 5395)
+@@ -433,7 +433,7 @@ void init_video()
+   #ifdef MACOSX
+   char* icon_fname = "images/engine/icons/supertux-256x256.png";
+   #else
+-  char* icon_fname = "images/engine/icons/supertux.xpm";
++  const char* icon_fname = "images/engine/icons/supertux.xpm";
+   #endif
+   SDL_Surface* icon = IMG_Load_RW(get_physfs_SDLRWops(icon_fname), true);
+   if(icon != 0) {
+Index: data/levels/world2/worldmap.stwm
+===================================================================
+--- data/levels/world2/worldmap.stwm	(revision 5249)
++++ data/levels/world2/worldmap.stwm	(revision 5395)
+@@ -251,7 +251,7 @@
+     (level
+       (name "christoph1.stl")
+       (x 43)
+-      (y 48)
++      (y 44)
+       (sprite "images/worldmap/common/shroom.sprite")
+     )
+     (level
+@@ -305,7 +305,7 @@
+     (level
+       (name "builder.stl")
+       (x 43)
+-      (y 44)
++      (y 48)
+       (sprite "images/worldmap/common/shroom.sprite")
+     )
+     (level
