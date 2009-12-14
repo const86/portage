@@ -13,6 +13,7 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="virtual/opengl
+	media-libs/glew
 	media-libs/libsdl
 	media-libs/sdl-image
 	dev-games/physfs
@@ -22,8 +23,6 @@ RDEPEND="${DEPEND}"
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 ESVN_PATCHES="9999-fs-layout.patch
 	desktop.patch"
-
-mycmakeargs="-D WERROR=OFF"
 
 src_unpack() {
 	subversion_src_unpack
