@@ -1,19 +1,8 @@
 Index: CMakeLists.txt
 ===================================================================
---- CMakeLists.txt	(revision 6170)
+--- CMakeLists.txt	(revision 6252)
 +++ CMakeLists.txt	(working copy)
-@@ -111,10 +111,6 @@
- 
- INCLUDE(ConfigureChecks)
- 
--## Create config.h and version.h
--
--configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
--configure_file(version.h.cmake ${CMAKE_BINARY_DIR}/version.h )
- include_directories (${CMAKE_BINARY_DIR}/)
- 
- ## Also execute instructions in src/squirrel/CMakeLists.txt
-@@ -363,13 +359,14 @@
+@@ -383,13 +383,14 @@
  
  ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
  
@@ -25,20 +14,8 @@ Index: CMakeLists.txt
    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/supertux2.desktop DESTINATION "share/applications")
  
 -  INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.png ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.xpm DESTINATION "share/pixmaps/")
-+  INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.png DESTINATION "share/pixmaps/" RENAME supertux2.png)
-+  INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.xpm DESTINATION "share/pixmaps/" RENAME supertux2.xpm)
++  INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.png DESTINATION "share/pixmaps/" RENAME "supertux2.png")
++  INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/engine/icons/supertux.xpm DESTINATION "share/pixmaps/" RENAME "supertux2.xpm")
  
  ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
  ENDIF(WIN32 AND NOT UNIX)
-@@ -423,6 +420,11 @@
- ENDIF(WIN32 AND NOT UNIX)
- INCLUDE(CPack)
- 
-+## Create config.h and version.h
-+
-+configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
-+configure_file(version.h.cmake ${CMAKE_BINARY_DIR}/version.h )
-+
- # move some config clutter to the advanced section
- MARK_AS_ADVANCED(
-   INSTALL_SUBDIR_BIN
