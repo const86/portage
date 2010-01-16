@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -12,9 +12,9 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac alsa ao avahi cdda curl fam flac ffmpeg jack libvisual mad minimal
-mms modplug mpg123 musepack nocxx ofa perl pulseaudio python readline ruby
-samba shout sid ssl vocoder vorbis wavpack xml"
+IUSE="aac alsa ao avahi cdda curl fam flac ffmpeg gme jack libvisual mad
+minimal mms modplug mpg123 musepack nocxx ofa perl pulseaudio python readline
+ruby samba shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -33,6 +33,7 @@ RDEPEND="dev-libs/glib:2
 		flac? ( media-libs/flac
 			media-libs/libogg )
 		ffmpeg? ( media-video/ffmpeg )
+		gme? ( media-libs/game-music-emu )
 		jack? ( media-sound/jack-audio-connection-kit )
 		libvisual? ( media-libs/libvisual:0.4
 			media-plugins/libvisual-plugins:0.4
@@ -76,7 +77,7 @@ src_configure() {
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
 		pd="coreaudio,mac,nms,oss,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac !nocxx:gme shout:ices jack \
+			avahi:daap aac:faad flac gme shout:ices jack \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
 			xml:rss samba vocoder vorbis wavpack xml:xspf
 		do

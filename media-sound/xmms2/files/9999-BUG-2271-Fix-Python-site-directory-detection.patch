@@ -1,8 +1,7 @@
-From 5ccfa7ab0897109a157c666d17fa699bdd740081 Mon Sep 17 00:00:00 2001
+From ebefe6d080859d6bd5c1c83e973150a46bb343f4 Mon Sep 17 00:00:00 2001
 From: Constantin Baranov <const@mimas.ru>
-Date: Tue, 22 Sep 2009 00:44:59 +0500
-Subject: [PATCH] BUG(2271): Fix Python site directory detection
-
+Date: Sat, 16 Jan 2010 23:00:16 +0400
+Subject: [PATCH 1/2] BUG(2271): Fix Python site directory detection
 
 Signed-off-by: Constantin Baranov <const@mimas.ru>
 ---
@@ -10,7 +9,7 @@ Signed-off-by: Constantin Baranov <const@mimas.ru>
  1 files changed, 3 insertions(+), 0 deletions(-)
 
 diff --git a/src/clients/lib/python/wscript b/src/clients/lib/python/wscript
-index b31ac6e..1e4471a 100644
+index 5ef8870..b6eeaf4 100644
 --- a/src/clients/lib/python/wscript
 +++ b/src/clients/lib/python/wscript
 @@ -1,6 +1,7 @@
@@ -21,7 +20,7 @@ index b31ac6e..1e4471a 100644
  
  def build(bld):
      obj = bld.new_task_gen('cc', 'shlib', 'pyext')
-@@ -20,6 +21,8 @@ def build(bld):
+@@ -25,6 +26,8 @@ def build(bld):
      bld.install_files('${xmmsclient_PYTHONDIR}', 'xmmsclient/qt3.py')
  
  def configure(conf):
@@ -29,7 +28,7 @@ index b31ac6e..1e4471a 100644
 +        os.environ['PYTHONDIR'] = distutils.sysconfig.get_python_lib()
      conf.check_tool('python')
      if not conf.env['PYTHON']:
-         return False
+         conf.fatal("python not found")
 -- 
-1.6.5.rc1
+1.6.6
 

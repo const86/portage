@@ -1,12 +1,11 @@
-From 7b6213c2444bf629fe261bb5ac213774cfa4682f Mon Sep 17 00:00:00 2001
+From b80a8c4a6faec06bcfac0e5649df162f97467c64 Mon Sep 17 00:00:00 2001
 From: Constantin Baranov <const@mimas.ru>
-Date: Tue, 22 Sep 2009 00:23:06 +0500
-Subject: [PATCH] BUG(2271): Enable gnu_dirs tool
-
+Date: Sat, 16 Jan 2010 23:06:19 +0400
+Subject: [PATCH 2/2] BUG(2271): Enable gnu_dirs tool
 
 Signed-off-by: Constantin Baranov <const@mimas.ru>
 ---
- pixmaps/wscript                           |    5 +---
+ pixmaps/wscript                           |    5 +----
  src/clients/cli/wscript                   |    1 +
  src/clients/et/wscript                    |    1 +
  src/clients/launcher/wscript              |    1 +
@@ -16,19 +15,19 @@ Signed-off-by: Constantin Baranov <const@mimas.ru>
  src/clients/lib/xmmsclient-ecore/wscript  |    1 +
  src/clients/lib/xmmsclient-glib/wscript   |    1 +
  src/clients/lib/xmmsclient/wscript        |    1 +
- src/clients/mdns/avahi/wscript            |    2 +
+ src/clients/mdns/avahi/wscript            |    2 ++
  src/clients/mdns/dns_sd/wscript           |    1 +
  src/clients/medialib-updater/wscript      |    1 +
  src/clients/nycli/wscript                 |    1 +
- src/clients/vistest/wscript               |    4 +++
+ src/clients/vistest/wscript               |    4 ++++
  src/include/wscript                       |    2 +-
- src/include/xmms/wscript                  |    9 ++-----
+ src/include/xmms/wscript                  |    6 ++----
  src/xmms/wscript                          |    1 +
- wscript                                   |   34 +++++-----------------------
- 19 files changed, 30 insertions(+), 39 deletions(-)
+ wscript                                   |   28 +++-------------------------
+ 19 files changed, 26 insertions(+), 34 deletions(-)
 
 diff --git a/pixmaps/wscript b/pixmaps/wscript
-index 89e231a..c5941d0 100644
+index b93b987..a4abbc2 100644
 --- a/pixmaps/wscript
 +++ b/pixmaps/wscript
 @@ -22,10 +22,7 @@ def build(bld):
@@ -42,7 +41,7 @@ index 89e231a..c5941d0 100644
 +    conf.env["PIXMAP_DIR"] = os.path.join(conf.env["DATAROOTDIR"], "pixmaps")
  
      if not conf.env["PIXMAP_DIR"]:
-         return False
+         conf.fatal("No pixmap dir")
 diff --git a/src/clients/cli/wscript b/src/clients/cli/wscript
 index 84ddec7..18f3701 100644
 --- a/src/clients/cli/wscript
@@ -56,7 +55,7 @@ index 84ddec7..18f3701 100644
      obj.source = """
          cmd_config.c
 diff --git a/src/clients/et/wscript b/src/clients/et/wscript
-index b7ed151..66da0d2 100644
+index b16405a..4b65b0d 100644
 --- a/src/clients/et/wscript
 +++ b/src/clients/et/wscript
 @@ -3,6 +3,7 @@ import Options
@@ -68,7 +67,7 @@ index b7ed151..66da0d2 100644
      obj.source = ['xmms2-et.c']
      obj.includes = '. ../../.. ../../include'
 diff --git a/src/clients/launcher/wscript b/src/clients/launcher/wscript
-index 330cbd2..f5e6b60 100644
+index d6e1086..e91c45f 100644
 --- a/src/clients/launcher/wscript
 +++ b/src/clients/launcher/wscript
 @@ -2,6 +2,7 @@ import Options
@@ -80,7 +79,7 @@ index 330cbd2..f5e6b60 100644
      obj.source = ['xmms2-launcher.c']
      obj.includes = '../../.. ../../include'
 diff --git a/src/clients/lib/xmmsclient++-glib/wscript b/src/clients/lib/xmmsclient++-glib/wscript
-index 2d03901..ff416f2 100644
+index e382763..7477ac6 100644
 --- a/src/clients/lib/xmmsclient++-glib/wscript
 +++ b/src/clients/lib/xmmsclient++-glib/wscript
 @@ -1,6 +1,7 @@
@@ -92,7 +91,7 @@ index 2d03901..ff416f2 100644
      lib.source = 'xmmsclient++-glib.cpp'
      lib.uselib = 'glib2'
 diff --git a/src/clients/lib/xmmsclient++/wscript b/src/clients/lib/xmmsclient++/wscript
-index a340f47..f265293 100644
+index ca14c52..a232950 100644
 --- a/src/clients/lib/xmmsclient++/wscript
 +++ b/src/clients/lib/xmmsclient++/wscript
 @@ -3,6 +3,7 @@ from waftools import tool
@@ -104,7 +103,7 @@ index a340f47..f265293 100644
      obj.includes = '../../../.. ../../../include ../../../includepriv'
      obj.source = """
 diff --git a/src/clients/lib/xmmsclient-cf/wscript b/src/clients/lib/xmmsclient-cf/wscript
-index b1cffaa..5e05aab 100644
+index 74efd10..eb10261 100644
 --- a/src/clients/lib/xmmsclient-cf/wscript
 +++ b/src/clients/lib/xmmsclient-cf/wscript
 @@ -3,6 +3,7 @@ import sys
@@ -116,7 +115,7 @@ index b1cffaa..5e05aab 100644
      obj.includes = '../../../.. ../../../include'
      obj.source = 'xmmsclient-cf.c'
 diff --git a/src/clients/lib/xmmsclient-ecore/wscript b/src/clients/lib/xmmsclient-ecore/wscript
-index 53614dd..a881d98 100644
+index 98db0c6..439c4f7 100644
 --- a/src/clients/lib/xmmsclient-ecore/wscript
 +++ b/src/clients/lib/xmmsclient-ecore/wscript
 @@ -2,6 +2,7 @@ from waftools import tool
@@ -152,7 +151,7 @@ index 85261f4..2181143 100644
      obj.includes = "../../../.. ../../../include ../../../includepriv"
      obj.source = """
 diff --git a/src/clients/mdns/avahi/wscript b/src/clients/mdns/avahi/wscript
-index fdc6851..de5aa29 100644
+index 96066ac..00865c3 100644
 --- a/src/clients/mdns/avahi/wscript
 +++ b/src/clients/mdns/avahi/wscript
 @@ -2,6 +2,7 @@ import Constants
@@ -172,7 +171,7 @@ index fdc6851..de5aa29 100644
    find.source = ['find-avahi.c']
    find.uselib = 'avahiclient'
 diff --git a/src/clients/mdns/dns_sd/wscript b/src/clients/mdns/dns_sd/wscript
-index e82288d..999c9b8 100644
+index 747d76d..baf027f 100644
 --- a/src/clients/mdns/dns_sd/wscript
 +++ b/src/clients/mdns/dns_sd/wscript
 @@ -3,6 +3,7 @@ import Options
@@ -184,7 +183,7 @@ index e82288d..999c9b8 100644
    obj.source = ['mdns-dnssd.c']
    obj.includes = '. ../../../.. ../../../include'
 diff --git a/src/clients/medialib-updater/wscript b/src/clients/medialib-updater/wscript
-index 0d34ee4..c27f3d1 100644
+index 841ae85..449a767 100644
 --- a/src/clients/medialib-updater/wscript
 +++ b/src/clients/medialib-updater/wscript
 @@ -2,6 +2,7 @@ import Constants
@@ -196,7 +195,7 @@ index 0d34ee4..c27f3d1 100644
      obj.source = "main.c"
      obj.includes = '. ../../.. ../../include'
 diff --git a/src/clients/nycli/wscript b/src/clients/nycli/wscript
-index 9d0965f..d48bc18 100644
+index 6fd35bc..933dacf 100644
 --- a/src/clients/nycli/wscript
 +++ b/src/clients/nycli/wscript
 @@ -1,5 +1,6 @@
@@ -207,7 +206,7 @@ index 9d0965f..d48bc18 100644
      obj.source = """main.c
                      cli_infos.c
 diff --git a/src/clients/vistest/wscript b/src/clients/vistest/wscript
-index f4c856d..5e26822 100644
+index fc349be..1ddf7ed 100644
 --- a/src/clients/vistest/wscript
 +++ b/src/clients/vistest/wscript
 @@ -2,6 +2,7 @@ import Options
@@ -256,16 +255,12 @@ index ffe008e..267a5af 100644
  def configure(conf):
      conf.sub_config("xmms")
 diff --git a/src/include/xmms/wscript b/src/include/xmms/wscript
-index 453f3d7..4952d42 100644
+index cf20808..4952d42 100644
 --- a/src/include/xmms/wscript
 +++ b/src/include/xmms/wscript
-@@ -15,13 +15,10 @@ def configure(conf):
+@@ -17,10 +17,8 @@ def configure(conf):
  
-     defs = {}
- 
--    defs['PKGLIBDIR'] = os.path.join(conf.env['PREFIX'],
--                                     'lib', 'xmms2')
-+    defs['PKGLIBDIR'] = os.path.join(conf.env['LIBDIR'], 'xmms2')
+     defs['PKGLIBDIR'] = os.path.join(conf.env['LIBDIR'], 'xmms2')
      defs['BINDIR']    = conf.env['BINDIR']
 -    defs['SHAREDDIR'] = os.path.join(conf.env['PREFIX'],
 -                                     'share', 'xmms2')
@@ -277,7 +272,7 @@ index 453f3d7..4952d42 100644
      defs['XMMS_VERSION'] = conf.env['VERSION']
  
 diff --git a/src/xmms/wscript b/src/xmms/wscript
-index ebedc0f..83190b2 100644
+index 15a7c77..56013fe 100644
 --- a/src/xmms/wscript
 +++ b/src/xmms/wscript
 @@ -45,6 +45,7 @@ def build(bld):
@@ -289,23 +284,19 @@ index ebedc0f..83190b2 100644
      prog.includes = '. ../.. ../include ../includepriv'
      prog.source = ["main.c"]
 diff --git a/wscript b/wscript
-index dfd9c1b..40faac8 100644
+index bd8bf01..b5b5255 100644
 --- a/wscript
 +++ b/wscript
-@@ -102,9 +102,9 @@ def build(bld):
-                'NAME': name,
-                 'LIB': lib,
+@@ -104,7 +104,7 @@ def build(bld):
               'PREFIX': bld.env['PREFIX'],
--             'BINDIR': os.path.join("${prefix}", "bin"),
--             'LIBDIR': os.path.join("${prefix}", "lib"),
+              'BINDIR': bld.env['BINDIR'],
+              'LIBDIR': bld.env['LIBDIR'],
 -         'INCLUDEDIR': os.path.join("${prefix}", "include", "xmms2"),
-+             'BINDIR': bld.env['BINDIR'],
-+             'LIBDIR': bld.env['LIBDIR'],
 +         'INCLUDEDIR': os.path.join(bld.env['INCLUDEDIR'], "xmms2"),
              'VERSION': bld.env["VERSION"],
          }
          obj.install_path = '${PKGCONFIGDIR}'
-@@ -247,11 +247,7 @@ def configure(conf):
+@@ -248,11 +248,7 @@ def configure(conf):
          conf.env["BUILD_XMMS2D"] = True
          subdirs.insert(0, "src/xmms")
  
@@ -318,7 +309,7 @@ index dfd9c1b..40faac8 100644
      conf.check_tool('man', tooldir=os.path.abspath('waftools'))
      conf.check_tool('misc')
      conf.check_tool('gcc')
-@@ -299,21 +295,11 @@ def configure(conf):
+@@ -304,16 +300,6 @@ def configure(conf):
      conf.env['XMMS_PKGCONF_FILES'] = []
      conf.env['XMMS_OUTPUT_PLUGINS'] = [(-1, "NONE")]
  
@@ -335,13 +326,7 @@ index dfd9c1b..40faac8 100644
      if Options.options.pkgconfigdir:
          conf.env['PKGCONFIGDIR'] = Options.options.pkgconfigdir
          print(conf.env['PKGCONFIGDIR'])
-     else:
--        conf.env['PKGCONFIGDIR'] = os.path.join(conf.env["PREFIX"], "lib", "pkgconfig")
-+        conf.env['PKGCONFIGDIR'] = os.path.join(conf.env["LIBDIR"], "pkgconfig")
- 
-     if Options.options.config_prefix:
-         for dir in Options.options.config_prefix:
-@@ -446,10 +432,8 @@ def _list_cb(option, opt, value, parser):
+@@ -451,10 +437,8 @@ def _list_cb(option, opt, value, parser):
      setattr(parser.values, option.dest, vals)
  
  def set_options(opt):
@@ -353,7 +338,7 @@ index dfd9c1b..40faac8 100644
  
      opt.add_option('--with-custom-version', type='string',
                     dest='customversion', help="Override git commit hash version")
-@@ -473,12 +457,6 @@ def set_options(opt):
+@@ -478,12 +462,6 @@ def set_options(opt):
                     help="Specify a directory to prepend to configuration prefix")
      opt.add_option('--without-xmms2d', action='store_true', default=False,
                     dest='without_xmms2d', help="Skip build of xmms2d")
@@ -367,5 +352,5 @@ index dfd9c1b..40faac8 100644
                     help="Specify directory where to install pkg-config files")
      opt.add_option('--with-target-platform', type='string',
 -- 
-1.6.5.rc1
+1.6.6
 
