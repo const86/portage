@@ -64,9 +64,6 @@ DEPEND="${RDEPEND}
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 
-EGIT_PATCHES=( "${FILESDIR}/9999-BUG-2271-Enable-gnu_dirs-tool.patch"
-	"${FILESDIR}/9999-BUG-2271-Fix-Python-site-directory-detection.patch" )
-
 src_configure() {
 	local conf oe od pe pd
 	if use minimal; then
@@ -75,7 +72,7 @@ src_configure() {
 		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,gvfs"
 		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
-		pd="coreaudio,mac,nms,oss,waveout"
+		pd="coreaudio,mac,nms,oss,sc64,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
 			avahi:daap aac:faad flac gme shout:ices jack \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
