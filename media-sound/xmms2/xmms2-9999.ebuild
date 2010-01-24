@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit git python waf
+inherit flag-o-matic git python waf
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -65,6 +65,7 @@ DEPEND="${RDEPEND}
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 
 src_configure() {
+	append-cflags -Wno-int-to-pointer-cast
 	local conf oe od pe pd
 	if use minimal; then
 		conf="--without-xmms2d=1"
