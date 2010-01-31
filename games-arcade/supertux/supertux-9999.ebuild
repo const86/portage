@@ -22,7 +22,6 @@ RDEPEND="${DEPEND}"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 ESVN_PATCHES="9999-fs-layout.patch
-	9999-fixes.patch
 	desktop.patch"
 
 src_unpack() {
