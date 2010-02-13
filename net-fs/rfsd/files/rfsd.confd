@@ -1,0 +1,3 @@
+RFSD_USER=nobody
+RFSD_HOST=localhost
+RFSD_PORT=1234
