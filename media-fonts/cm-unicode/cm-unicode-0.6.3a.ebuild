@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://canopus.iacp.dvo.ru/~panov/cm-unicode/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-otf.tar.gz
 ftp://canopus.iacp.dvo.ru/pub/Font/${PN}/${P}-otf.tar.gz"
 
-LICENSE="X11"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
