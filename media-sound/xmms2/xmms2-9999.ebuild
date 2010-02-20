@@ -12,13 +12,13 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac alsa ao avahi cdda curl fam flac ffmpeg gme jack libvisual mad
-minimal mms modplug mpg123 musepack nocxx ofa perl pulseaudio python readline
+IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mad
+minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
 ruby samba shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
-	!nocxx? ( dev-libs/boost )
+	cxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
 	readline? ( sys-libs/readline )
 	ruby? ( dev-lang/ruby )
@@ -87,7 +87,7 @@ src_configure() {
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi !minimal:et !minimal:launcher \
 		fam:medialib-updater readline:nycli perl python ruby \
-		libvisual:vistest !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib
+		libvisual:vistest cxx:xmmsclient++ cxx:xmmsclient++-glib
 	do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done

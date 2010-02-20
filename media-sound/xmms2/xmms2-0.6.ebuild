@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,13 +14,13 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi cdda curl fam flac ffmpeg jack libvisual mad minimal
-mms modplug mpg123 musepack nocxx ofa perl pulseaudio python readline ruby
+IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg jack libvisual mad
+minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline ruby
 samba shout sid ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
-	!nocxx? ( dev-libs/boost )
+	cxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
 	readline? ( sys-libs/readline )
 	ruby? ( dev-lang/ruby )
@@ -80,7 +80,7 @@ src_configure() {
 		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
 		pd="coreaudio,mac,nms,oss,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac !nocxx:gme shout:ices jack \
+			avahi:daap aac:faad flac cxx:gme shout:ices jack \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
 			xml:rss samba vocoder vorbis wavpack xml:xspf
 		do
@@ -92,7 +92,7 @@ src_configure() {
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi !minimal:et !minimal:launcher \
 		fam:medialib-updater readline:nycli perl python ruby \
-		libvisual:vistest !nocxx:xmmsclient++ !nocxx:xmmsclient++-glib
+		libvisual:vistest cxx:xmmsclient++ cxx:xmmsclient++-glib
 	do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
