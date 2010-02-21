@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,9 +13,10 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="media-sound/xmms2
-	x11-libs/gtk+"
+	x11-libs/gtk+
+	dev-libs/libgee"
 DEPEND="${RDEPEND}
-	>=dev-lang/vala-0.7.5"
+	>=dev-lang/vala-0.7.9"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
