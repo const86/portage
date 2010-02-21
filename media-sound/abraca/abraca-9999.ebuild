@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
 src_compile() {
-	./scons PREFIX=/usr ${MAKEOPTS} || die
+	./scons PREFIX=/usr || die
 }
 
 src_install() {
