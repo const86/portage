@@ -12,13 +12,14 @@ SLOT="2"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="virtual/opengl
+RDEPEND="virtual/opengl
 	media-libs/glew
 	media-libs/libsdl
 	media-libs/sdl-image
 	dev-games/physfs
 	media-libs/openal"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/boost"
 
 ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
 ESVN_PATCHES="9999-fs-layout.patch
