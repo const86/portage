@@ -21,8 +21,6 @@ RDEPEND="${DEPEND}"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
-EGIT_PATCHES=( "${FILESDIR}/9999-XMMS-API-update.patch" )
-
 src_compile() {
 	emake gxmms2 || die
 	if use gkrellm; then
