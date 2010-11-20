@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="virtual/opengl"
+RDEPEND="virtual/opengl
+	media-libs/libsdl"
 DEPEND="${RDEPEND}"
 
 EGIT_REPO_URI="git://git.mimas.ru/const/glxnosync"
