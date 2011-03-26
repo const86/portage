@@ -7,4 +7,5 @@ media-sound/xmms2:mpg123 - Build mpg123 plugin
 media-sound/xmms2:ofa - Build OFA (Open Fingerprint Architecture) plugin
 media-sound/xmms2:shout - Build Icecast output plugin
 media-sound/xmms2:sid - Build SID (Commodore 64 Audio) plugin
+media-sound/xmms2:tremor - Build Tremor plugin
 media-sound/xmms2:vocoder - Build vocoder plugin

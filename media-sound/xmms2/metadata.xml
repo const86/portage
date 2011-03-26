@@ -10,6 +10,7 @@
     <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
     <flag name="shout">Build Icecast output plugin</flag>
     <flag name="sid">Build SID (Commodore 64 Audio) plugin</flag>
+    <flag name="tremor">Build Tremor plugin</flag>
     <flag name="vocoder">Build vocoder plugin</flag>
   </use>
 </pkgmetadata>

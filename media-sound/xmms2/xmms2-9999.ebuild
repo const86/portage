@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mac
 mad minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
-ruby samba shout sid sndfile speex ssl vocoder vorbis wavpack xml"
+ruby samba shout sid sndfile speex ssl tremor vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -56,6 +56,7 @@ RDEPEND="dev-libs/glib:2
 		speex? ( media-libs/libogg
 			media-libs/speex )
 		ssl? ( dev-libs/openssl )
+		tremor? ( media-libs/tremor )
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
@@ -76,11 +77,11 @@ src_configure() {
 		pe="apefile,asf,asx,cue,diskwrite,equalizer,file,flv,gvfs,html"
 		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
 		pe="${pe},nulstripper,oss,pls,replaygain,tta,wave,xml"
-		pd="coreaudio,nms,sc68,sun,tremor,waveout"
+		pd="coreaudio,nms,sc68,sun,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
 			avahi:daap aac:faad flac gme shout:ices jack mac \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
-			xml:rss samba sid sndfile speex vocoder vorbis \
+			xml:rss samba sid sndfile speex tremor vocoder vorbis \
 			wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
