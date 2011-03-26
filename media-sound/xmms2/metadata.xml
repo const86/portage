@@ -4,6 +4,7 @@
   <use>
     <flag name="gme">Build GME (games-music-emu) plugin</flag>
     <flag name="libvisual">Build visualization client</flag>
+    <flag name="mac">Build MAC (Monkey's Audio) plugin</flag>
     <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
     <flag name="mpg123">Build mpg123 plugin</flag>
     <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
