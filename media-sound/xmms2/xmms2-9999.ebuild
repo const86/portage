@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mad
 minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
-ruby samba shout sid ssl vocoder vorbis wavpack xml"
+ruby samba shout sid speex ssl vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -51,6 +51,8 @@ RDEPEND="dev-libs/glib:2
 			media-libs/libogg
 			media-libs/libshout )
 		sid? ( media-sound/sidplay )
+		speex? ( media-libs/libogg
+			media-libs/speex )
 		ssl? ( dev-libs/openssl )
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
@@ -76,7 +78,7 @@ src_configure() {
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
 			avahi:daap aac:faad flac gme shout:ices jack \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
-			xml:rss samba vocoder vorbis wavpack xml:xspf
+			xml:rss samba speex vocoder vorbis wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
