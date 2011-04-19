@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,17 +15,17 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="media-sound/xmms2
-	x11-libs/gtk+
+	x11-libs/gtk+:3
 	dev-libs/libgee"
 DEPEND="${RDEPEND}
-	dev-lang/vala:0.10"
+	dev-lang/vala:0.12"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
 src_compile() {
-	./scons PREFIX=/usr VALAC=valac-0.10 || die
+	./scons PREFIX=/usr VALAC=valac-0.12 || die
 }
 
 src_install() {
-	./scons DESTDIR="${D}" VALAC=valac-0.10 install
+	./scons DESTDIR="${D}" VALAC=valac-0.12 install
 }
