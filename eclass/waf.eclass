@@ -1,6 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+inherit python
+
 ewaf() {
 	local -a args=("$@")
 	local -a opts
@@ -27,6 +29,10 @@ ewaf() {
 	CCFLAGS=${CFLAGS} LINKFLAGS=${LDFLAGS} ./waf "${opts[@]}" "${args[@]}"
 }
 
+waf_pkg_setup() {
+	python_set_active_version 2
+}
+
 waf_src_configure() {
 	ewaf --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib \
 		--libdir=/usr/$(get_libdir) "$@" configure \
@@ -41,4 +47,4 @@ waf_src_install() {
 	ewaf --destdir="${D}" "$@" install || die "waf install failed"
 }
 
-EXPORT_FUNCTIONS src_configure src_compile src_install
+EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_install
