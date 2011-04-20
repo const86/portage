@@ -14,9 +14,9 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mad
-minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
-ruby samba shout sid ssl vocoder vorbis wavpack xml"
+IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mac
+mad minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
+ruby samba shout sid speex ssl tremor vocoder vorbis wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -34,13 +34,14 @@ RDEPEND="dev-libs/glib:2
 		curl? ( net-misc/curl )
 		flac? ( media-libs/flac
 			media-libs/libogg )
-		ffmpeg? ( media-video/ffmpeg )
+		ffmpeg? ( virtual/ffmpeg )
 		gme? ( media-libs/game-music-emu )
 		jack? ( media-sound/jack-audio-connection-kit )
 		libvisual? ( media-libs/libvisual:0.4
 			media-plugins/libvisual-plugins:0.4
 			media-libs/libsdl
 			media-libs/libvorbis )
+		mac? ( media-sound/mac )
 		mad? ( media-libs/libmad )
 		mms? ( media-libs/libmms )
 		modplug? ( media-libs/libmodplug )
@@ -52,8 +53,11 @@ RDEPEND="dev-libs/glib:2
 		shout? ( media-libs/libvorbis
 			media-libs/libogg
 			media-libs/libshout )
-		sid? ( media-sound/sidplay )
+		sid? ( media-libs/libsidplay:2 )
+		speex? ( media-libs/libogg
+			media-libs/speex )
 		ssl? ( dev-libs/openssl )
+		tremor? ( media-libs/tremor )
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
 		vorbis? ( media-libs/libvorbis )
@@ -72,14 +76,15 @@ src_configure() {
 	if use minimal; then
 		conf="--without-xmms2d=1"
 	else
-		pe="asf,apefile,asx,cue,diskwrite,equalizer,file,flv,gvfs"
+		pe="apefile,asf,asx,cue,diskwrite,equalizer,file,flv,gvfs,html"
 		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
-		pe="${pe},nulstripper,pls,replaygain,tta,wave,xml"
-		pd="coreaudio,mac,nms,oss,sc64,waveout"
+		pe="${pe},nulstripper,oss,pls,replaygain,tta,wave,xml"
+		pd="coreaudio,nms,sc68,sun,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac gme shout:ices jack \
+			avahi:daap aac:faad flac gme shout:ices jack mac \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
-			xml:rss samba vocoder vorbis wavpack xml:xspf
+			xml:rss samba sid speex tremor vocoder vorbis \
+			wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
