@@ -32,7 +32,7 @@ RDEPEND="dev-libs/glib:2
 		curl? ( net-misc/curl )
 		flac? ( media-libs/flac
 			media-libs/libogg )
-		ffmpeg? ( media-video/ffmpeg )
+		ffmpeg? ( virtual/ffmpeg )
 		gme? ( media-libs/game-music-emu )
 		jack? ( media-sound/jack-audio-connection-kit )
 		libvisual? ( media-libs/libvisual:0.4
