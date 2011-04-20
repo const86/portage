@@ -4,6 +4,8 @@
 
 EAPI="1"
 
+inherit python
+
 DESCRIPTION="GTK2 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"
 SRC_URI="http://abraca.xmms.se/attachments/download/134/${P}.tar.gz"
@@ -18,6 +20,10 @@ RDEPEND="media-sound/xmms2
 	dev-libs/libgee"
 DEPEND="${RDEPEND}
 	dev-lang/vala:0.10"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_compile() {
 	./scons PREFIX=/usr VALAC=/usr/bin/valac-0.10 || die

@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit git
+inherit python git
 
 DESCRIPTION="GTK2 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	dev-lang/vala:0.12"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_compile() {
 	./scons PREFIX=/usr VALAC=valac-0.12 || die
