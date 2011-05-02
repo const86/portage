@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -20,6 +20,6 @@ EGIT_REPO_URI="git://git.mimas.ru/const/tchroot"
 src_install() {
 	dobin tchroot
 	fperms 4711 /usr/bin/tchroot
-	newinitd "${FILESDIR}/chroot.initd" chroot
-	newconfd "${FILESDIR}/chroot.confd" chroot
+	insinto /etc/tchroot
+	doins "${FILESDIR}"/example
 }

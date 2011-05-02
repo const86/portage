@@ -1,8 +1,0 @@
-# /etc/conf.d/chroot
-
-# Root of chroot environment
-ROOT="/mnt/chroot"
-
-# List of directories bound into chroot.
-# The default list is common minimum for normal system.
-BIND=( /dev /dev/pts /dev/shm /home /proc /sys /tmp )
