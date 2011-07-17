@@ -88,7 +88,7 @@ src_configure() {
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
 	fi
-	oe="cli,pixmaps"
+	oe="pixmaps"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi !minimal:et !minimal:launcher \
 		fam:medialib-updater readline:nycli perl python ruby \
