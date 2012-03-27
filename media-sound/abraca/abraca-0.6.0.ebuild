@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="media-sound/xmms2
 	x11-libs/gtk+:2
-	dev-libs/libgee"
+	dev-libs/libgee:0"
 DEPEND="${RDEPEND}
 	dev-lang/vala:0.10"
 
