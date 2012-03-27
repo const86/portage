@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit flag-o-matic git python waf
+inherit flag-o-matic git-2 python waf
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -67,6 +67,7 @@ DEPEND="${RDEPEND}
 	python? ( dev-python/pyrex )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
+EGIT_HAS_SUBMODULES="true"
 
 src_configure() {
 	append-cflags -Wno-int-to-pointer-cast
@@ -88,7 +89,7 @@ src_configure() {
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
 	fi
-	oe="pixmaps"
+	oe="pixmaps,s4,sqlite2s4"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi !minimal:et !minimal:launcher \
 		fam:medialib-updater readline:nycli perl python ruby \
