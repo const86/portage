@@ -18,7 +18,7 @@ RDEPEND="media-sound/xmms2
 	x11-libs/gtk+:3
 	dev-libs/libgee:0"
 DEPEND="${RDEPEND}
-	dev-lang/vala:0.12"
+	dev-lang/vala:0.14"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/${PN}.git"
 
@@ -27,9 +27,9 @@ pkg_setup() {
 }
 
 src_compile() {
-	./scons PREFIX=/usr VALAC=valac-0.12 || die
+	./scons PREFIX=/usr VALAC=valac-0.14 || die
 }
 
 src_install() {
-	./scons DESTDIR="${D}" VALAC=valac-0.12 install
+	./scons DESTDIR="${D}" VALAC=valac-0.14 install
 }
