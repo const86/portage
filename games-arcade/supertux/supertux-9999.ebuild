@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit subversion games cmake-utils
+EAPI="2"
+
+inherit base git-2 games cmake-utils
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -21,12 +23,17 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 	dev-libs/boost"
 
-ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux/"
-ESVN_PATCHES="9999-fs-layout.patch
-	desktop.patch"
+EGIT_REPO_URI="https://code.google.com/p/supertux/"
+PATCHES=( "${FILESDIR}/9999-fs-layout.patch"
+	"${FILESDIR}/desktop.patch"
+	"${FILESDIR}/9999-compile.patch" )
 
 src_unpack() {
-	subversion_src_unpack
+	git-2_src_unpack
+}
+
+src_prepare() {
+	base_src_prepare
 }
 
 src_install() {

@@ -1,0 +1,19 @@
+diff --git a/src/object/bonus_block.cpp b/src/object/bonus_block.cpp
+index e11c7de..2aca1e8 100644
+--- a/src/object/bonus_block.cpp
++++ b/src/object/bonus_block.cpp
+@@ -216,12 +216,13 @@ BonusBlock::try_open(Player *player)
+       sector->add_object(new OneUp(get_pos(), direction));
+       break;
+ 
+-    case CONTENT_CUSTOM:
++    case CONTENT_CUSTOM: {
+       SpecialRiser* riser = new SpecialRiser(get_pos(), object);
+       object = 0;
+       sector->add_object(riser);
+       sound_manager->play("sounds/upgrade.wav");
+       break;
++    }
+ 
+     case CONTENT_SCRIPT:
+       if(script != "") {
