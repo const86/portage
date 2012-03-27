@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="1"
 
-inherit eutils git multilib
+inherit eutils git-2 multilib
 
 DESCRIPTION="GTK2 based XMMS2 client written in C"
 HOMEPAGE="http://wejp.k.vu/projects/xmms2/"

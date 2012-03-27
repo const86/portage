@@ -4,7 +4,7 @@
 
 EAPI="1"
 
-inherit python git
+inherit python git-2
 
 DESCRIPTION="GTK2 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"

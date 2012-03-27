@@ -1,10 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit git waf
+inherit git-2 waf
 
 DESCRIPTION="WinAMP2 skinable XMMS2 client"
 HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Promoe"
