@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <use>
+    <flag name="fluidsynth">Build Fluidsynth plugin</flag>
     <flag name="gme">Build GME (games-music-emu) plugin</flag>
     <flag name="libvisual">Build visualization client</flag>
     <flag name="mac">Build MAC (Monkey's Audio) plugin</flag>

@@ -1,5 +1,6 @@
 media-sound/gxmms2:gkrellm - Build GKrellM plugin
 media-sound/xmms2:gme - Build GME (games-music-emu) plugin
+media-sound/xmms2:fluidsynth - Build Fluidsynth plugin
 media-sound/xmms2:libvisual - Build visualization client
 media-sound/xmms2:mac - Build MAC (Monkey's Audio) plugin
 media-sound/xmms2:mms - Build MMS (Microsoft Media Server) output plugin

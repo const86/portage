@@ -12,9 +12,10 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac alsa ao avahi cdda curl cxx fam flac ffmpeg gme jack libvisual mac
-mad minimal mms modplug mpg123 musepack ofa perl pulseaudio python readline
-ruby samba shout sid sndfile speex ssl tremor vocoder vorbis wavpack xml"
+IUSE="aac alsa ao avahi cdda curl cxx fam flac fluidsynth ffmpeg gme jack
+libvisual mac mad minimal mms modplug mpg123 musepack ofa perl pulseaudio python
+readline ruby samba shout sid sndfile speex ssl tremor vocoder vorbis wavpack
+xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -32,6 +33,7 @@ RDEPEND="dev-libs/glib:2
 		curl? ( net-misc/curl )
 		flac? ( media-libs/flac
 			media-libs/libogg )
+		fluidsynth? ( media-sound/fluidsynth )
 		ffmpeg? ( virtual/ffmpeg )
 		gme? ( media-libs/game-music-emu )
 		jack? ( media-sound/jack-audio-connection-kit )
@@ -76,11 +78,11 @@ src_configure() {
 		conf="--without-xmms2d=1"
 	else
 		pe="apefile,asf,asx,cue,diskwrite,equalizer,file,flv,gvfs,html"
-		pe="${pe},icymetaint,id3v2,karaoke,m3u,mp4,normalize,null"
-		pe="${pe},nulstripper,oss,pls,replaygain,tta,wave,xml"
+		pe="${pe},icymetaint,id3v2,karaoke,m3u,mid1,midsquash,mp4,normalize"
+		pe="${pe},null,nulstripper,oss,pls,replaygain,tta,wave,xml"
 		pd="coreaudio,nms,sc68,sun,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac gme shout:ices jack mac \
+			avahi:daap aac:faad flac fluidsynth gme shout:ices jack mac \
 			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
 			xml:rss samba sid sndfile speex tremor vocoder vorbis \
 			wavpack xml:xspf
