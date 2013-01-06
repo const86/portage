@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,9 +13,9 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="aac alsa ao avahi cdda curl cxx fam flac fluidsynth ffmpeg gme jack
-libvisual mac mad minimal mms modplug mpg123 musepack ofa perl pulseaudio python
-readline ruby samba shout sid sndfile speex ssl tremor vocoder vorbis wavpack
-xml"
+libvisual mac mad minimal mms modplug mpg123 musepack ofa opus perl pulseaudio
+python readline ruby samba shout sid sndfile speex ssl tremor vocoder vorbis
+wavpack xml"
 
 RDEPEND="dev-libs/glib:2
 	fam? ( app-admin/gamin )
@@ -48,6 +48,8 @@ RDEPEND="dev-libs/glib:2
 		mpg123? ( >=media-sound/mpg123-1.5.1 )
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
+		opus? ( media-libs/libogg
+				media-libs/opus )
 		pulseaudio? ( media-sound/pulseaudio )
 		samba? ( net-fs/samba )
 		shout? ( media-libs/libvorbis
@@ -83,7 +85,7 @@ src_configure() {
 		pd="coreaudio,nms,sc68,sun,waveout"
 		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
 			avahi:daap aac:faad flac fluidsynth gme shout:ices jack mac \
-			mad mms modplug mpg123 musepack ofa pulseaudio:pulse \
+			mad mms modplug mpg123 musepack ofa opus pulseaudio:pulse \
 			xml:rss samba sid sndfile speex tremor vocoder vorbis \
 			wavpack xml:xspf
 		do

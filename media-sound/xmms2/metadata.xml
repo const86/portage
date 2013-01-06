@@ -9,6 +9,7 @@
     <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
     <flag name="mpg123">Build mpg123 plugin</flag>
     <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
+    <flag name="opus">Build Opus plugin</flag>
     <flag name="shout">Build Icecast output plugin</flag>
     <flag name="sid">Build SID (Commodore 64 Audio) plugin</flag>
     <flag name="tremor">Build Tremor plugin</flag>
