@@ -12,18 +12,18 @@ HOMEPAGE="http://xmms2.xmms.se/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac alsa ao avahi cdda curl cxx fam flac fluidsynth ffmpeg gme jack
-libvisual mac mad minimal mms modplug mpg123 musepack ofa opus perl pulseaudio
-python readline ruby samba shout sid sndfile speex ssl tremor vocoder vorbis
+IUSE="aac airplay +alsa ao avahi cdda curl cxx flac fluidsynth ffmpeg gme ices
+jack libvisual mac +mad mlib-update mms modplug mp3 musepack ofa opus perl
+pulseaudio python ruby samba +server sid sndfile speex tremor vocoder +vorbis
 wavpack xml"
 
 RDEPEND="dev-libs/glib:2
-	fam? ( app-admin/gamin )
+	sys-libs/readline
+	mlib-update? ( app-admin/gamin )
 	cxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
-	readline? ( sys-libs/readline )
 	ruby? ( dev-lang/ruby )
-	!minimal? ( dev-db/sqlite:3
+	server? ( dev-db/sqlite:3
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
@@ -45,21 +45,21 @@ RDEPEND="dev-libs/glib:2
 		mad? ( media-libs/libmad )
 		mms? ( media-libs/libmms )
 		modplug? ( media-libs/libmodplug )
-		mpg123? ( >=media-sound/mpg123-1.5.1 )
+		mp3? ( >=media-sound/mpg123-1.5.1 )
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
 		opus? ( media-libs/libogg
 				media-libs/opus )
 		pulseaudio? ( media-sound/pulseaudio )
 		samba? ( net-fs/samba )
-		shout? ( media-libs/libvorbis
+		ices? ( media-libs/libvorbis
 			media-libs/libogg
 			media-libs/libshout )
 		sid? ( media-libs/libsidplay:2 )
 		sndfile? ( media-libs/libsndfile )
 		speex? ( media-libs/libogg
 			media-libs/speex )
-		ssl? ( dev-libs/openssl )
+		airplay? ( dev-libs/openssl )
 		tremor? ( media-libs/tremor )
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
@@ -76,27 +76,27 @@ EGIT_HAS_SUBMODULES="true"
 src_configure() {
 	append-cflags -Wno-int-to-pointer-cast
 	local conf oe od pe pd
-	if use minimal; then
-		conf="--without-xmms2d=1"
-	else
+	if use server; then
 		pe="apefile,asf,asx,cue,diskwrite,equalizer,file,flv,gvfs,html"
 		pe="${pe},icymetaint,id3v2,karaoke,m3u,mid1,midsquash,mp4,normalize"
 		pe="${pe},null,nulstripper,oss,pls,replaygain,tta,wave,xml"
 		pd="coreaudio,nms,sc68,sun,waveout"
-		for p in alsa ssl:airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac fluidsynth gme shout:ices jack mac \
-			mad mms modplug mpg123 musepack ofa opus pulseaudio:pulse \
+		for p in alsa airplay ao ffmpeg:avcodec cdda curl \
+			avahi:daap aac:faad flac fluidsynth gme ices jack mac \
+			mad mms modplug mp3:mpg123 musepack ofa opus pulseaudio:pulse \
 			xml:rss samba sid sndfile speex tremor vocoder vorbis \
 			wavpack xml:xspf
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
 		conf="${conf} --with-plugins=${pe} --without-plugins=${pd}"
+	else
+		conf="--without-xmms2d"
 	fi
-	oe="pixmaps,s4,sqlite2s4"
+	oe="nycli,pixmaps,s4,sqlite2s4"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi !minimal:et !minimal:launcher \
-		fam:medialib-updater readline:nycli perl python ruby \
+	for o in avahi server:et server:launcher \
+		mlib-update:medialib-updater perl python ruby \
 		libvisual:vistest cxx:xmmsclient++ cxx:xmmsclient++-glib
 	do
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"

@@ -2,17 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <use>
+    <flag name="airplay">Support for airplay format</flag>
     <flag name="fluidsynth">Build Fluidsynth plugin</flag>
     <flag name="gme">Build GME (games-music-emu) plugin</flag>
+    <flag name="ices">Icecast source output plugin</flag>
     <flag name="libvisual">Build visualization client</flag>
-    <flag name="mac">Build MAC (Monkey's Audio) plugin</flag>
-    <flag name="mms">Build MMS (Microsoft Media Server) output plugin</flag>
-    <flag name="mpg123">Build mpg123 plugin</flag>
-    <flag name="ofa">Build OFA (Open Fingerprint Architecture) plugin</flag>
+    <flag name="mac">Support for Monkey's Audio (APE) format with help of <pkg>media-sound/mac</pkg></flag>
+    <flag name="mlib-update">Enable building of xmms2-mlib-updater client</flag>
+    <flag name="ofa">Support for Open Fingerprint Architecture (OFA)</flag>
     <flag name="opus">Build Opus plugin</flag>
-    <flag name="shout">Build Icecast output plugin</flag>
-    <flag name="sid">Build SID (Commodore 64 Audio) plugin</flag>
+    <flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
+    <flag name="sid">Support for C64 SID</flag>
     <flag name="tremor">Build Tremor plugin</flag>
-    <flag name="vocoder">Build vocoder plugin</flag>
+    <flag name="vocoder">Phase vocoder effect plugin</flag>
   </use>
 </pkgmetadata>
