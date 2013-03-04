@@ -93,7 +93,7 @@ src_configure() {
 	else
 		conf="--without-xmms2d"
 	fi
-	oe="nycli,pixmaps,s4,sqlite2s4"
+	oe="migrate-collections,nycli,pixmaps,s4,sqlite2s4"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
 	for o in avahi server:et server:launcher \
 		mlib-update:medialib-updater perl python ruby \
