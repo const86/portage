@@ -68,7 +68,7 @@ RDEPEND="dev-libs/glib:2
 		xml? ( dev-libs/libxml2 ) )"
 DEPEND="${RDEPEND}
 	dev-lang/python
-	python? ( dev-python/pyrex )"
+	python? ( dev-python/cython )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 EGIT_HAS_SUBMODULES="true"
