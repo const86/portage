@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,7 +8,7 @@ inherit python
 
 DESCRIPTION="GTK2 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"
-SRC_URI="https://github.com/downloads/Abraca/Abraca/${P}.tar.gz"
+SRC_URI="mirror://github/Abraca/Abraca/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
