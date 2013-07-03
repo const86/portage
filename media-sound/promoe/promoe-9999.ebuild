@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
-inherit git-2 waf
+inherit waf-utils git-2
 
 DESCRIPTION="WinAMP2 skinable XMMS2 client"
 HOMEPAGE="http://wiki.xmms2.xmms.se/index.php/Client:Promoe"
