@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="5"
+PYTHON_COMPAT=( python{2_5,2_6,2_7,3_1,3_2,3_3} )
 
-inherit flag-o-matic git-2 python waf
+inherit python-single-r1 waf-utils git-2
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -68,13 +69,13 @@ RDEPEND="dev-libs/glib:2
 		xml? ( dev-libs/libxml2 ) )"
 DEPEND="${RDEPEND}
 	dev-lang/python
-	python? ( dev-python/cython )"
+	python? ( ${PYTHON_DEPS}
+		dev-python/cython )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
 EGIT_HAS_SUBMODULES="true"
 
 src_configure() {
-	append-cflags -Wno-int-to-pointer-cast
 	local conf oe od pe pd
 	if use server; then
 		pe="apefile,asf,asx,cue,diskwrite,equalizer,file,flv,gvfs,html"
@@ -102,18 +103,10 @@ src_configure() {
 		use ${o/:*} && oe="${oe},${o/*:}" || od="${od},${o/*:}"
 	done
 	conf="${conf} --without-optionals=${od} --with-optionals=${oe}"
-	waf_src_configure ${conf}
+	waf-utils_src_configure ${conf}
 }
 
 src_install() {
-	waf_src_install --without-ldconfig
-	use python && python_need_rebuild
-}
-
-pkg_postinst() {
-	use python && python_mod_optimize $(python_get_sitedir)/xmmsclient
-}
-
-pkg_postrm() {
-	use python && python_mod_cleanup $(python_get_sitedir)/xmmsclient
+	waf-utils_src_install
+	use python && python_optimize
 }
