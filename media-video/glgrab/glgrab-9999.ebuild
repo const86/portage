@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="virtual/ffmpeg
-	virtual/opengl"
+	virtual/opengl
+	media-libs/opencv"
 
 EGIT_REPO_URI="git://github.com/const86/glgrab.git"
