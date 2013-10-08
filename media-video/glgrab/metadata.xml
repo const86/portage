@@ -1,3 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata/>
+<pkgmetadata>
+  <use>
+    <flag name='egl'>Enable EGL support.</flag>
+  </use>
+</pkgmetadata>
