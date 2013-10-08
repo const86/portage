@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit git-2 cmake-utils flag-o-matic
+inherit git-2 cmake-utils
 
 DESCRIPTION="A tool for grabbing video from OpenGL powered applications"
 HOMEPAGE="https://github.com/const86/glgrab"
@@ -27,9 +27,4 @@ src_configure() {
 		$(cmake-utils_use_want ffmpeg FFMPEG)
 	)
 	cmake-utils_src_configure
-}
-
-src_prepare() {
-	append-cflags -ftree-vectorize
-	cmake-utils_src_prepare
 }
