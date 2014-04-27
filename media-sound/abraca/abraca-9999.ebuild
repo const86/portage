@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="5"
 
+PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 VALA_MIN_API_VERSION="0.20"
 
-inherit waf-utils vala git-2
+inherit base python-any-r1 waf-utils vala git-2
 
 DESCRIPTION="GTK3 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"
@@ -24,3 +25,8 @@ DEPEND="${RDEPEND}
 
 EGIT_REPO_URI="git://github.com/Abraca/Abraca.git"
 EGIT_HAS_SUBMODULES="true"
+
+src_prepare() {
+		base_src_prepare
+		vala_src_prepare
+}
