@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit base git-2 games cmake-utils
+inherit base git-r3 games cmake-utils
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -16,24 +16,30 @@ IUSE=""
 
 RDEPEND="virtual/opengl
 	media-libs/glew
-	media-libs/libsdl
-	media-libs/sdl-image
+	media-libs/libsdl2
+	media-libs/sdl2-image
+	media-libs/libvorbis
 	dev-games/physfs
 	media-libs/openal"
 DEPEND="${RDEPEND}
 	dev-libs/boost"
 
 EGIT_REPO_URI="https://code.google.com/p/supertux/"
-PATCHES=( "${FILESDIR}/9999-fs-layout.patch"
-	"${FILESDIR}/desktop.patch"
-	"${FILESDIR}/9999-compile.patch" )
 
 src_unpack() {
-	git-2_src_unpack
+	git-r3_src_unpack
+	export GIT_DIR="${EGIT_DIR}"
 }
 
 src_prepare() {
 	base_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DINSTALL_SUBDIR_BIN=games/bin
+	)
+	cmake-utils_src_configure
 }
 
 src_install() {
