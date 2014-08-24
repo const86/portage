@@ -1,10 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
+EAPI="2"
 
-inherit eutils games subversion
+inherit base eutils git-r3 games
 
 DESCRIPTION="SuperTux level editor"
 HOMEPAGE="http://supertux.lethargik.org/"
@@ -14,20 +14,18 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="games-arcade/supertux:2
+RDEPEND="games-arcade/supertux:2
 	virtual/opengl
 	dev-lang/mono
 	dev-dotnet/gtk-sharp:2
 	dev-dotnet/glade-sharp:2"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	sys-devel/m4"
 
-ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux-editor/"
+EGIT_REPO_URI="https://code.google.com/p/supertux.editor/"
 
 src_compile() {
-	sed -e "s:\"/usr/games/supertux\":\"/usr/games/bin/supertux2\":" \
-		-e "s:\"/usr/share/games/supertux\":\"/usr/share/games/supertux2\":" \
-		-i supertux-editor/Settings.cs || die
-	emake || die
+	emake
 }
 
 src_install() {
