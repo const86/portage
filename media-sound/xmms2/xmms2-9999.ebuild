@@ -1,9 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_5,2_6,2_7,3_1,3_2,3_3} )
+PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
+PYTHON_REQ_USE="threads(+)"
 
 inherit python-single-r1 waf-utils git-2
 
@@ -19,11 +20,11 @@ pulseaudio python ruby samba +server sid sndfile speex tremor vocoder +vorbis
 wavpack xml"
 
 RDEPEND="dev-libs/glib:2
-	sys-libs/readline
+	sys-libs/readline:0
 	mlib-update? ( app-admin/gamin )
 	cxx? ( dev-libs/boost )
 	perl? ( dev-lang/perl )
-	ruby? ( dev-lang/ruby )
+	ruby? ( dev-lang/ruby:* )
 	server? ( dev-db/sqlite:3
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
@@ -60,7 +61,7 @@ RDEPEND="dev-libs/glib:2
 		sndfile? ( media-libs/libsndfile )
 		speex? ( media-libs/libogg
 			media-libs/speex )
-		airplay? ( dev-libs/openssl )
+		airplay? ( dev-libs/openssl:* )
 		tremor? ( media-libs/tremor )
 		vocoder? ( sci-libs/fftw:3.0
 			media-libs/libsamplerate )
