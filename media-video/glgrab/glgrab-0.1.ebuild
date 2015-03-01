@@ -12,13 +12,12 @@ SRC_URI="https://github.com/const86/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="egl ffmpeg"
 
-RDEPEND=""
-DEPEND="virtual/opengl
-	egl? ( media-libs/mesa[egl] )
-	ffmpeg? ( media-video/ffmpeg )"
+RDEPEND="virtual/opengl[${MULTILIB_USEDEP}]
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )
+	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )"
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/glgrab )
 

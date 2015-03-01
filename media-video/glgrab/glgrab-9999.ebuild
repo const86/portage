@@ -14,10 +14,9 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="egl ffmpeg"
 
-RDEPEND=""
-DEPEND="virtual/opengl
-	egl? ( media-libs/mesa[egl] )
-	ffmpeg? ( media-video/ffmpeg )"
+RDEPEND="virtual/opengl[${MULTILIB_USEDEP}]
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )
+	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )"
 
 EGIT_REPO_URI="git://github.com/const86/glgrab.git"
 
