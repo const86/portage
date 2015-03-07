@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit python-single-r1 waf-utils git-2
+inherit python-single-r1 waf-utils git-r3
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
 HOMEPAGE="http://xmms2.xmms.se/"
@@ -74,7 +74,12 @@ DEPEND="${RDEPEND}
 		dev-python/cython )"
 
 EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
-EGIT_HAS_SUBMODULES="true"
+
+src_unpack() {
+	git-r3_src_unpack "$@"
+	cd "${S}"
+	git submodule update --init
+}
 
 src_configure() {
 	local conf oe od pe pd

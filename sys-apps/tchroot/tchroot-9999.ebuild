@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Transparent chroot tool"
 HOMEPAGE="http://git.mimas.ru/?p=const/tchroot"

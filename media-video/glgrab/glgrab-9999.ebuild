@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit git-2 cmake-multilib
+inherit git-r3 cmake-multilib
 
 DESCRIPTION="A tool for grabbing video from OpenGL powered applications"
 HOMEPAGE="https://github.com/const86/glgrab"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 VALA_MIN_API_VERSION="0.24"
 
-inherit base python-any-r1 waf-utils vala git-2
+inherit base python-any-r1 waf-utils vala git-r3
 
 DESCRIPTION="GTK3 XMMS2 client written in Vala, with focus on collections"
 HOMEPAGE="http://abraca.xmms.se/"
@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 	$(vala_depend)"
 
 EGIT_REPO_URI="git://github.com/Abraca/Abraca.git"
-EGIT_HAS_SUBMODULES="true"
 
 src_prepare() {
 		base_src_prepare
