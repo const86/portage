@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils git-r3
 
 DESCRIPTION="X(cross)platform Music Multiplexing System"
-HOMEPAGE="http://xmms2.xmms.se/"
+HOMEPAGE="http://xmms2.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -73,7 +73,7 @@ DEPEND="${RDEPEND}
 	python? ( ${PYTHON_DEPS}
 		dev-python/cython )"
 
-EGIT_REPO_URI="git://git.xmms.se/xmms2/xmms2-devel.git"
+EGIT_REPO_URI="git://git.xmms2.org/xmms2/xmms2-devel.git"
 
 src_unpack() {
 	git-r3_src_unpack "$@"
