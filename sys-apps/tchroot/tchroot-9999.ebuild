@@ -5,7 +5,7 @@
 inherit git-r3
 
 DESCRIPTION="Transparent chroot tool"
-HOMEPAGE="http://git.mimas.ru/?p=const/tchroot"
+HOMEPAGE="https://github.com/const86/tchroot"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,7 +15,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-EGIT_REPO_URI="git://git.mimas.ru/const/tchroot"
+EGIT_REPO_URI="git://github.com/const86/tchroot.git"
 
 src_install() {
 	dobin tchroot

@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils git-r3
 
 DESCRIPTION="Remote Filesystem daemon"
-HOMEPAGE="http://git.mimas.ru/?p=const/rfs"
+HOMEPAGE="https://github.com/const86/rfs"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="dev-libs/libxslt"
 RDEPEND=""
 
-EGIT_REPO_URI="git://git.mimas.ru/const/rfs"
+EGIT_REPO_URI="git://github.com/const86/rfs.git"
 
 src_compile() {
 	emake -C ipc || die "IPC build failed"
