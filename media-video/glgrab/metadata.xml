@@ -3,5 +3,6 @@
 <pkgmetadata>
   <use>
     <flag name='egl'>Enable EGL support.</flag>
+    <flag name='cuda'>Enable CUDA support. Enable for GeForce GPUs.</flag>
   </use>
 </pkgmetadata>
