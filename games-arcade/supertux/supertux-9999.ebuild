@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="2"
 inherit base git-r3 games cmake-utils
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
-HOMEPAGE="http://supertux.lethargik.org/"
+HOMEPAGE="http://supertuxproject.org/"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -24,7 +24,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 	dev-libs/boost"
 
-EGIT_REPO_URI="https://code.google.com/p/supertux/"
+EGIT_REPO_URI="https://github.com/SuperTux/supertux.git"
 
 src_unpack() {
 	git-r3_src_unpack
