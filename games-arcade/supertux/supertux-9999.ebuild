@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit base git-r3 games cmake-utils
+inherit git-r3 cmake-utils
 
 DESCRIPTION="Classic 2D jump'n run sidescroller game similar to SuperMario: Milestone 2"
 HOMEPAGE="http://supertuxproject.org/"
 
 LICENSE="GPL-2"
-SLOT="2"
+SLOT="0"
 KEYWORDS=""
 IUSE=""
 
@@ -26,23 +26,17 @@ DEPEND="${RDEPEND}
 
 EGIT_REPO_URI="https://github.com/SuperTux/supertux.git"
 
+CMAKE_IN_SOURCE_BUILD=true
+
 src_unpack() {
 	git-r3_src_unpack
 	export GIT_DIR="${EGIT_DIR}"
 }
 
-src_prepare() {
-	base_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DINSTALL_SUBDIR_BIN=games/bin
+		-DINSTALL_SUBDIR_BIN=bin
+		-DINSTALL_SUBDIR_SHARE=share/supertux2
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	prepgamesdirs
 }
