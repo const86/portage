@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="virtual/opengl
-	media-libs/glew
+	media-libs/glew:0
 	media-libs/libsdl2
 	media-libs/sdl2-image
 	media-libs/libvorbis

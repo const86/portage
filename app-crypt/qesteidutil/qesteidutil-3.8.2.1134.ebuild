@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="5"
 
 inherit cmake-utils
 
@@ -17,7 +17,7 @@ IUSE=""
 
 S="${WORKDIR}/${PN}"
 
-RDEPEND="dev-libs/openssl
+RDEPEND="dev-libs/openssl:0
 	dev-libs/opensc
 	sys-apps/pcsc-lite
 	dev-qt/qtcore:5
