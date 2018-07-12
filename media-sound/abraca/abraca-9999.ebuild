@@ -3,11 +3,11 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 PYTHON_REQ_USE="threads(+)"
 
 VALA_MIN_API_VERSION="0.32"
-VALA_MAX_API_VERSION="0.34"
+VALA_MAX_API_VERSION="0.36"
 
 inherit python-any-r1 waf-utils vala git-r3
 
@@ -29,5 +29,6 @@ EGIT_REPO_URI="git://github.com/Abraca/Abraca.git"
 
 src_prepare() {
 		default
+		epatch "${FILESDIR}/0001-Fix-build-breaks-against-Vala-0.36.patch"
 		vala_src_prepare
 }
