@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 PYTHON_REQ_USE="threads(+)"
 
 VALA_MIN_API_VERSION="0.32"
-VALA_MAX_API_VERSION="0.36"
+VALA_MAX_API_VERSION="0.42"
 
 inherit python-any-r1 waf-utils vala git-r3
 
