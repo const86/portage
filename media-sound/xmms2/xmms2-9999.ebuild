@@ -13,10 +13,10 @@ HOMEPAGE="http://xmms2.org/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac airplay +alsa ao avahi cdda curl cxx flac fluidsynth ffmpeg gme ices
+IUSE="aac airplay +alsa ao cdda curl cxx flac fluidsynth ffmpeg gme ices
 jack libvisual mac +mad mlib-update mms modplug mp3 musepack ofa opus perl
 pulseaudio python ruby samba +server sid sndfile speex tremor vocoder +vorbis
-wavpack xml"
+wavpack xml zeroconf"
 
 RDEPEND="dev-libs/glib:2
 	sys-libs/readline:0
@@ -28,7 +28,7 @@ RDEPEND="dev-libs/glib:2
 		aac? ( media-libs/faad2 )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
-		avahi? ( net-dns/avahi )
+		zeroconf? ( net-dns/avahi )
 		cdda? ( dev-libs/libcdio
 			media-libs/libdiscid )
 		curl? ( net-misc/curl )
@@ -88,10 +88,10 @@ src_configure() {
 		pe="${pe},null,nulstripper,oss,pls,replaygain,tta,wave,xml"
 		pd="coreaudio,nms,sc68,sun,waveout"
 		for p in alsa airplay ao ffmpeg:avcodec cdda curl \
-			avahi:daap aac:faad flac fluidsynth gme ices jack mac \
+			aac:faad flac fluidsynth gme ices jack mac \
 			mad mms modplug mp3:mpg123 musepack ofa opus pulseaudio:pulse \
 			xml:rss samba sid sndfile speex tremor vocoder vorbis \
-			wavpack xml:xspf
+			wavpack xml:xspf zeroconf:daap
 		do
 			use ${p/:*} && pe="${pe},${p/*:}" || pd="${pd},${p/*:}"
 		done
@@ -101,7 +101,7 @@ src_configure() {
 	fi
 	oe="migrate-collections,nycli,pixmaps,s4,sqlite2s4"
 	od="dns_sn,xmmsclient-ecore,xmmsclient-cf"
-	for o in avahi server:et server:launcher \
+	for o in zeroconf:avahi server:et server:launcher \
 		mlib-update:medialib-updater perl python ruby \
 		libvisual:vistest cxx:xmmsclient++ cxx:xmmsclient++-glib
 	do
