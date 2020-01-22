@@ -1,0 +1,29 @@
+From fff0f367cea75477085f5e6f01a80c91d544cbbe Mon Sep 17 00:00:00 2001
+From: Constantin Baranov <const@mimas.ru>
+Date: Fri, 17 Jan 2020 11:21:31 -0800
+Subject: [PATCH 2/2] Fix build breaks against Vala 0.44
+
+---
+ src/abraca-treeview.vala | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/abraca-treeview.vala b/src/abraca-treeview.vala
+index 70d023c..8e778c1 100644
+--- a/src/abraca-treeview.vala
++++ b/src/abraca-treeview.vala
+@@ -166,10 +166,10 @@ public class Abraca.TreeView : Gtk.TreeView, SelectedRowsMixin
+ 	{
+ 		int width, row_height;
+ 
+-		GLib.List<unowned Gtk.TreePath> paths = selection.get_selected_rows(null);
++		GLib.List<Gtk.TreePath> paths = selection.get_selected_rows(null);
+ 
+ 		var surfaces = new GLib.List<Cairo.Surface>();
+-		foreach (unowned Gtk.TreePath path in paths)
++		foreach (Gtk.TreePath path in paths)
+ 			surfaces.append(create_row_drag_icon(path));
+ 
+ 		var template = surfaces.first().data;
+-- 
+2.24.1
+
